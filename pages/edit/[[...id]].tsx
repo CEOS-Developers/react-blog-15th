@@ -1,0 +1,74 @@
+import styled from "styled-components";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+
+const Edit = () => {
+  const router = useRouter();
+  const [title, setTitle] = useState("default title");
+  const [content, setContent] = useState("default content");
+
+  useEffect(() => {
+    console.log(router.query.id);
+  }, []);
+
+  return (
+    <Container>
+      <TitleInput value={title} onChange={(e) => setTitle(e.target.value)} />
+      <ContentInput
+        value={content}
+        onChange={(e) => setContent(e.target.value)}
+      />
+      <Buttons>
+        <Link href="/detail/1">
+          <Button>수정완료</Button>
+        </Link>
+        <Link href="/">
+          <Button>취소</Button>
+        </Link>
+      </Buttons>
+    </Container>
+  );
+};
+
+export default Edit;
+
+const Container = styled.section`
+  border: 0.01rem solid grey;
+  height: 40rem;
+  width: 30rem;
+  display: flex;
+  flex-direction: column;
+`;
+const TitleInput = styled.input`
+  font-size: 2rem;
+  margin: 1.5rem;
+  padding: 0.5rem;
+  width: 26.5rem;
+  border: none;
+  border-bottom: 0.01rem solid grey;
+  :focus {
+    outline: none;
+  }
+`;
+const ContentInput = styled.textarea`
+  margin: 1.5rem;
+  padding: 0.5rem;
+  width: 26.5rem;
+  height: 27rem;
+  font-size: 1rem;
+  resize: none;
+  border: 0.01rem solid grey;
+  :focus {
+    outline: none;
+  }
+`;
+const Buttons = styled.section`
+  display: flex;
+  justify-content: flex-end;
+`;
+const Button = styled.a`
+  & + & {
+    margin: 0 2rem;
+  }
+`;

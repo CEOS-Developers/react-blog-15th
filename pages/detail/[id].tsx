@@ -1,7 +1,14 @@
 import styled from "styled-components";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Detail = () => {
+  const router = useRouter();
+
+  const handleEdit = (): void => {
+    router.push(`/edit/${router.query.id}`);
+  };
+
   return (
     <Container>
       <Title>title</Title>
@@ -9,9 +16,9 @@ const Detail = () => {
       <ScrollContents>
         <section>내용</section>
         <ButtonsBox>
-          <Link href="/edit">
+          <section onClick={handleEdit}>
             <Button>수정</Button>
-          </Link>
+          </section>
           <Link href="/">
             <Button>삭제</Button>
           </Link>
