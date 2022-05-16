@@ -1,7 +1,7 @@
 //메인 화면에서 글쓰기 버튼을 클릭하면 새로 작성->확인 클릭시 디테일 화면에 매핑됨
 //디테일 페이지에서 클릭하면 기존에 작성된 내용을 에디터 페이지로 불러오기+삭제
 
-import { useCallback, useState,useRef} from "react";
+import { useCallback, useState,useRef, useEffect} from "react";
 import styled from "styled-components";
 
 function Editor(){
@@ -18,6 +18,17 @@ function Editor(){
    const onChangeContent = ((event) => {
         setContent(event.target.value);
         });
+
+    const titleRef = useRef();
+    const contentRef = useRef();
+
+    useEffect(()=>{
+        titleRef.current.focus(); //title 입력 받을때만 autofocuse 생기는 부분
+    },[title]);
+
+    useEffect(()=>{
+        contentRef.current.focus(); //content 입력 받을때만 autofocus 생기는 부분
+    },[content]);
 
     const Container = styled.div`
     
@@ -56,19 +67,20 @@ function Editor(){
             <Header>블로그 글쓰기</Header>
             <Form>
                 <Title
-                type="text"
+                type="title"
                 value={title}
                 onChange={onChangeTitle}
                 placeholder="제목"
                 spellCheck="false"
-                autoFocus={true}
+                ref={titleRef}
                 /> 
                 <Content
-                type="text"
+                type="content"
                 value={content}
                 onChange={onChangeContent}
                 placeholder="본문"
                 spellCheck="false"
+                ref={contentRef}
                 />
                 <PostingButton>포스트 수정</PostingButton>
             </Form>
