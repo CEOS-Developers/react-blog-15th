@@ -4,23 +4,24 @@ import Link from 'next/link';
 import MainPost from "../components/MainPost";
 import data from "../data/data.json";
 
-function Main(){
-    
+export default function Main(){
+
     return(
         <>
         <Container>
             <Header>나의 블로그</Header>
             <PostingButton>포스트 쓰기</PostingButton>
+
             {data.map(({title,data,content})=>
-            <MainPost title={title} data={data} content={content}/>)}
+            <Link href="Editor">
+            <MainPost title={title} data={data} content={content}/></Link>)}
+            
         </Container>
         
         </>
     );
     
 }
-
-export default Main;
 
 const Container = styled.div`
     
