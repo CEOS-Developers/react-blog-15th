@@ -3,9 +3,9 @@
 import styled from "styled-components";
 import React from "react";
 
-const MainPost = React.forwardRef(({ title,data,content },ref) => {
+const MainPost = React.forwardRef(({ title,data,content }) => {
     return (
-      <PostWrapper title={title} data={data} content={content}>
+      <PostWrapper title={title} date={date} content={content}>
       {title} {data} {content}
       </PostWrapper>
 );
