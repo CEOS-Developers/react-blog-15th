@@ -18,30 +18,26 @@ const initialState = {
       id: "1",
       title: "default title",
       content: "default content",
-      date: "2022-05-17 18:00",
+      date: "05-17 18:00",
     },
   ],
-} as IPostState; // 초기 상태 값
+} as IPostState;
 
 const postSlice = createSlice({
-  name: "sample",
+  name: "post",
   initialState,
   reducers: {
     addPost: (state, action: PayloadAction<IPost>) => {
       state.posts = [...state.posts, action.payload];
     },
     updatePost: (state, action: PayloadAction<IPost>) => {
-      state.posts.splice(
-        state.posts.findIndex((post) => post.id === action.payload.id),
-        1
-      );
-      state.posts = [...state.posts, action.payload];
+      state.posts = [
+        ...state.posts.filter((post) => post.id !== action.payload.id),
+        action.payload,
+      ];
     },
     deletePost(state, action: PayloadAction<string>) {
-      state.posts.splice(
-        state.posts.findIndex((post) => post.id === action.payload),
-        1
-      );
+      state.posts = state.posts.filter((post) => post.id !== action.payload);
     },
   },
   extraReducers: {
@@ -55,4 +51,4 @@ const postSlice = createSlice({
 });
 
 export const { addPost, updatePost, deletePost } = postSlice.actions;
-export default postSlice.reducer; // 리듀서
+export default postSlice.reducer;

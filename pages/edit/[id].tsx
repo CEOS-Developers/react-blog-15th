@@ -17,13 +17,11 @@ const Edit = () => {
   const handleSubmit = (): void => {
     const idx = posts.findIndex((post) => post.id === router.query.id);
     const cur = new Date();
-    const date = `${cur.getFullYear()}-${String(cur.getMonth() + 1).padStart(
-      2,
-      "0"
-    )}-${String(cur.getDate()).padStart(
-      2,
-      "0"
-    )} ${cur.getHours()}:${cur.getMinutes()}`;
+    const date = `${String(cur.getMonth() + 1).padStart(2, "0")}-${String(
+      cur.getDate()
+    ).padStart(2, "0")} ${String(cur.getHours()).padStart(2, "0")}:${String(
+      cur.getMinutes()
+    ).padStart(2, "0")}`;
     const postObj = {
       id: String(router.query.id),
       title,
