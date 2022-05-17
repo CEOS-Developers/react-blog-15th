@@ -10,12 +10,12 @@ export default function MainPage(){
         <>
         <Container>
             <Header>나의 블로그</Header>
-            <Link href="/Editor">
+            <Link href="/EditorPage">
                 <PostingButton>포스트 쓰기</PostingButton>
             </Link>
 
             {data.map(({title,date,content})=>
-            <Link href={`/Details/${encodeURIComponent(title)}`}>
+            <Link href={`/DetailsPage/${encodeURIComponent(title)}`}>
             <MainPost title={title} date={date} content={content}/>
             </Link>)}
             

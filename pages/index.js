@@ -1,10 +1,10 @@
 import React from 'react';
-import DetailedPage from '../pages/DetailedPage'
+import MainPage from '../pages/MainPage'
 import Link from 'next/link'
 
 const Index = () => {
   return (
-    <DetailedPage/>
+    <MainPage/>
   );
 };
 
