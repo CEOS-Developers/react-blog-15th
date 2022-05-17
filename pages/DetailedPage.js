@@ -20,5 +20,5 @@ const DetailedPage = ({ title,date, content }) => {
       </PostWrapper>
 );
   }
-
+  
   export default DetailedPage;

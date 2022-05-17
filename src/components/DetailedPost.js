@@ -4,7 +4,7 @@ import styled from "styled-components";
 import React from "react";
 
 const DetailedPost = ({ title,date,content }) => {
-    return (
+   return (
       <PostWrapper title={title} date={date} content={content}>
       {title} {date} {content}
       </PostWrapper>
