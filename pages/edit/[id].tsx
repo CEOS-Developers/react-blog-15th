@@ -1,10 +1,11 @@
 import styled from "styled-components";
 import Link from "next/link";
-import { ChangeEvent, useEffect, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import { useAppSelector } from "../../hooks/useAppSelector";
 import { useAppDispatch } from "../../hooks/useAppDispatch";
 import { useRouter } from "next/router";
 import { addPost, updatePost } from "../../store/modules/post";
+import PostLayout from "../../components/PostLayout";
 
 const Edit = () => {
   const router = useRouter();
@@ -19,7 +20,7 @@ const Edit = () => {
     const date = `${cur.getFullYear()}-${String(cur.getMonth() + 1).padStart(
       2,
       "0"
-    )}-${String(cur.getDay()).padStart(
+    )}-${String(cur.getDate()).padStart(
       2,
       "0"
     )} ${cur.getHours()}:${cur.getMinutes()}`;
@@ -30,8 +31,10 @@ const Edit = () => {
       date,
     };
     if (idx === -1) {
+      // 새로운 post 작성
       dispatch(addPost(postObj));
     } else {
+      // post update
       dispatch(updatePost(postObj));
     }
     router.push(`/detail/${router.query.id}`);
@@ -45,12 +48,13 @@ const Edit = () => {
   useEffect(() => {
     const idx = posts.findIndex((post) => String(post.id) === router.query.id);
     if (idx !== -1) {
+      // post update인 경우
       setInput({ title: posts[idx].title, content: posts[idx].content });
     }
   }, []);
 
   return (
-    <Container>
+    <PostLayout>
       <TitleInput name="title" value={title} onChange={handleInputChange} />
       <ContentInput
         name="content"
@@ -63,20 +67,12 @@ const Edit = () => {
           <Button>취소</Button>
         </Link>
       </Buttons>
-    </Container>
+    </PostLayout>
   );
 };
 
 export default Edit;
 
-const Container = styled.section`
-  border: 0.01rem solid grey;
-  border-radius: 1rem;
-  height: 40rem;
-  width: 50rem;
-  display: flex;
-  flex-direction: column;
-`;
 const TitleInput = styled.input`
   font-size: 2rem;
   margin: 1.5rem;

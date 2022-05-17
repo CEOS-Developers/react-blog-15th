@@ -5,6 +5,7 @@ import { useAppSelector } from "../../hooks/useAppSelector";
 import { useAppDispatch } from "../../hooks/useAppDispatch";
 import { useState, useEffect } from "react";
 import { deletePost } from "../../store/modules/post";
+import PostLayout from "../../components/PostLayout";
 
 const Detail = () => {
   const router = useRouter();
@@ -24,11 +25,13 @@ const Detail = () => {
 
   useEffect(() => {
     const idx = posts.findIndex((post) => post.id === router.query.id);
-    setPost(posts[idx]);
+    if (idx !== -1) {
+      setPost(posts[idx]);
+    }
   }, []);
 
   return (
-    <Container>
+    <PostLayout>
       <Title>{post.title}</Title>
       <Date>{post.date}</Date>
       <ScrollContents>
@@ -43,20 +46,12 @@ const Detail = () => {
           <Button onClick={handleDelete}>삭제</Button>
         </ButtonsBox>
       </ScrollContents>
-    </Container>
+    </PostLayout>
   );
 };
 
 export default Detail;
 
-const Container = styled.section`
-  border: 0.01rem solid grey;
-  border-radius: 1rem;
-  height: 40rem;
-  width: 50rem;
-  display: flex;
-  flex-direction: column;
-`;
 const Title = styled.p`
   font-size: 2rem;
   margin: 2rem;
