@@ -8,6 +8,7 @@ import useInput from '../src/hooks/useInput';
 import data from '../src/data/data.json';
 import { useRecoilState } from 'recoil';
 import { PostListState } from '../src/recoil/recoil';
+import{Container,Header} from '../src/GlobalStyle';
 
 function EditorPage() {
   const { inputText, onInputChange, reset } = useInput();
@@ -40,9 +41,10 @@ function EditorPage() {
 
   return (
     <>
-      <Container>
+        <Container>
         <Header>블로그 글쓰기</Header>
         <Form>
+          <InputWrapper>
           <Title
             type="text"
             name="title"
@@ -59,6 +61,7 @@ function EditorPage() {
             placeholder="본문"
             spellCheck="false"
           />
+          </InputWrapper>
           <PostingButton onClick={handleNewPost}>포스트 등록</PostingButton>
         </Form>
       </Container>
@@ -68,28 +71,25 @@ function EditorPage() {
 
 export default EditorPage;
 
-const Container = styled.div`
-    
-width : 1000px;
-margin 0 auto;
-`;
-const Header = styled.header`
-  font-size: 30px;
-`;
-
 const Form = styled.form`
   padding: 10px;
 `;
 const PostingButton = styled.button`
   font-size: 15px;
 `;
-const Title = styled.input`
-  font-size: 15px;
+const Title = styled.textarea`
+  font-size: 20px;
   border-bottom: 1px solid grey;
   padding: 5px;
 `;
-const Content = styled.input`
+const Content = styled.textarea`
   font-size: 15px;
   border-bottom: 1px solid grey;
   padding: 5px;
+  height:300px;
 `;
+const InputWrapper = styled.div`
+  display:flex;
+  flex-direction:column;
+
+`
