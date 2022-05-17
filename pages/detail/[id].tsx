@@ -32,7 +32,7 @@ const Detail = () => {
       <Title>{post.title}</Title>
       <Date>{post.date}</Date>
       <ScrollContents>
-        <section>{post.content}</section>
+        <Content>{post.content}</Content>
         <ButtonsBox>
           <Link href="/">
             <Button>목록</Button>
@@ -68,8 +68,11 @@ const Date = styled.p`
 `;
 const ScrollContents = styled.section`
   height: 30rem;
-  margin: 1rem 2rem;
+  margin: 0 2rem 1rem 2rem;
   overflow: auto;
+`;
+const Content = styled.section`
+  white-space: pre-line;
 `;
 const ButtonsBox = styled.section`
   display: flex;
@@ -77,5 +80,5 @@ const ButtonsBox = styled.section`
   margin-top: 3rem;
 `;
 const Button = styled.a`
-  margin: 0 1rem;
+  margin: 1rem;
 `;
