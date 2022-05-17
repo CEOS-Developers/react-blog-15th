@@ -13,7 +13,7 @@ const DetailPost = ({ title,date, content }) => {
 
     return (
       <PostWrapper title={currentPost.title} date={currentPost.date} content={currentPost.content}>
-      {title} {data} {content}
+      {title} {date} {content}
       </PostWrapper>
 );
   }

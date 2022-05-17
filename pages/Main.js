@@ -14,9 +14,9 @@ export default function Main(){
                 <PostingButton>포스트 쓰기</PostingButton>
             </Link>
 
-            {data.map(({title,data,content})=>
+            {data.map(({title,date,content})=>
             <Link href={`/Details/${encodeURIComponent(title)}`}>
-            <MainPost title={title} data={data} content={content}/>
+            <MainPost title={title} date={date} content={content}/>
             </Link>)}
             
         </Container>
