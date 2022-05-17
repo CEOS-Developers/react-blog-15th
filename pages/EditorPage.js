@@ -37,6 +37,10 @@ function EditorPage() {
       console.log(postList);
       reset();
     }
+
+    else{
+      alert("입력하세요!");
+    }
   };
 
   return (
