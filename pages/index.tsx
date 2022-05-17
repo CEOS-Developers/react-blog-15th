@@ -1,26 +1,30 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import styled from 'styled-components'
+import type { NextPage } from "next";
+import Head from "next/head";
+import styled from "styled-components";
+import Link from "next/link";
 
 const Home: NextPage = () => {
   return (
     <Container>
       <Head>
-        <title>Team Healseer - CRUD app</title>
+        <title>Team Healthier - CRUD app</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Div>
-        헬시어 화이팅
+        헬시어 화이팅{""}
+        <Link href={`/example/page`}>
+          <a>{"샘플 페이지로 링크"}</a>
+        </Link>
       </Div>
     </Container>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
 
 const Container = styled.div`
   padding: 0 2rem;
-`
+`;
 
 const Div = styled.div`
   min-height: 100vh;
@@ -30,4 +34,4 @@ const Div = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-`
+`;
