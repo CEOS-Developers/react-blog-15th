@@ -16,10 +16,7 @@ const Home: NextPage = () => {
   return (
     <Container>
       <Div>
-        헬시어 화이팅{""}
-        <Link href={`/example/page`}>
-          <a>{"샘플 페이지로 링크"}</a>
-        </Link>
+        헬시어 화이팅
         {/* post list */}
         {posts.map((post) => (
           <Link key={post.id} href={`/detail/${post.id}`}>

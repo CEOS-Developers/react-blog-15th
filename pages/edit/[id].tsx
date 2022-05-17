@@ -28,6 +28,7 @@ const Edit = () => {
       content,
       date,
     };
+
     if (idx === -1) {
       // 새로운 post 작성
       dispatch(addPost(postObj));
@@ -35,6 +36,7 @@ const Edit = () => {
       // post update
       dispatch(updatePost(postObj));
     }
+
     router.push(`/detail/${router.query.id}`);
   };
   const handleInputChange = (
