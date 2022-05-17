@@ -2,10 +2,13 @@ import styled from "styled-components";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useAppSelector } from "../../hooks/useAppSelector";
+import { useAppDispatch } from "../../hooks/useAppDispatch";
 import { useState, useEffect } from "react";
+import { deletePost } from "../../store/modules/post";
 
 const Detail = () => {
   const router = useRouter();
+  const dispatch = useAppDispatch();
   const [post, setPost] = useState({
     id: "",
     title: "",
@@ -15,13 +18,12 @@ const Detail = () => {
   const posts = useAppSelector((state) => state.post.posts);
 
   const handleDelete = (): void => {
+    dispatch(deletePost(String(router.query.id)));
     router.push("/");
   };
 
   useEffect(() => {
-    console.log(posts, router.query.id);
     const idx = posts.findIndex((post) => post.id === router.query.id);
-    console.log(idx);
     setPost(posts[idx]);
   }, []);
 
