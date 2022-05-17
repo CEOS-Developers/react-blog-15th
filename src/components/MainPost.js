@@ -3,13 +3,13 @@
 import styled from "styled-components";
 import React from "react";
 
-const MainPost = React.forwardRef(({ title,data,content }) => {
+const MainPost = ({ title,date,content }) => {
     return (
       <PostWrapper title={title} date={date} content={content}>
-      {title} {data} {content}
+      {title} {date} {content}
       </PostWrapper>
 );
-  })
+  }
 
 const PostWrapper = styled.section`
     
