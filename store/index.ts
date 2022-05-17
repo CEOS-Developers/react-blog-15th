@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { createWrapper } from "next-redux-wrapper";
-import sampleReducer from "./modules/sampleReducer";
+import postReducer from "./modules/post";
 
 const store = configureStore({
   reducer: {
-    example: sampleReducer,
+    post: postReducer,
   },
   devTools: process.env.NODE_ENV !== "production",
 });

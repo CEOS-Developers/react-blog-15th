@@ -1,20 +1,29 @@
 import type { NextPage } from "next";
-import Head from "next/head";
 import styled from "styled-components";
 import Link from "next/link";
+import { useAppSelector } from "../hooks/useAppSelector";
+import { v4 as uuid } from "uuid";
+import { useRouter } from "next/router";
 
 const Home: NextPage = () => {
+  const posts = useAppSelector((state) => state.post.posts);
+  const router = useRouter();
+
+  const handleRouting = (): void => {
+    router.push(`/edit/${uuid()}`);
+  };
+
   return (
     <Container>
-      <Head>
-        <title>Team Healthier - CRUD app</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <Div>
-        헬시어 화이팅{""}
-        <Link href={`/example/page`}>
-          <a>{"샘플 페이지로 링크"}</a>
-        </Link>
+        헬시어 화이팅
+        {/* post list */}
+        {posts.map((post) => (
+          <Link key={post.id} href={`/detail/${post.id}`}>
+            <a>{post.title}</a>
+          </Link>
+        ))}
+        <a onClick={handleRouting}>작성</a>
       </Div>
     </Container>
   );
