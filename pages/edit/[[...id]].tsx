@@ -66,8 +66,9 @@ export default Edit;
 
 const Container = styled.section`
   border: 0.01rem solid grey;
+  border-radius: 1rem;
   height: 40rem;
-  width: 30rem;
+  width: 50rem;
   display: flex;
   flex-direction: column;
 `;
@@ -75,7 +76,7 @@ const TitleInput = styled.input`
   font-size: 2rem;
   margin: 1.5rem;
   padding: 0.5rem;
-  width: 26.5rem;
+  width: 47rem;
   border: none;
   border-bottom: 0.01rem solid grey;
   :focus {
@@ -85,7 +86,7 @@ const TitleInput = styled.input`
 const ContentInput = styled.textarea`
   margin: 1.5rem;
   padding: 0.5rem;
-  width: 26.5rem;
+  width: 47rem;
   height: 27rem;
   font-size: 1rem;
   resize: none;

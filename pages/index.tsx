@@ -1,15 +1,10 @@
 import type { NextPage } from "next";
-import Head from "next/head";
 import styled from "styled-components";
 import Link from "next/link";
 
 const Home: NextPage = () => {
   return (
     <Container>
-      <Head>
-        <title>Team Healthier - CRUD app</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <Div>
         헬시어 화이팅{""}
         <Link href={`/example/page`}>
