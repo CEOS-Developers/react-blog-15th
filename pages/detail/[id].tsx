@@ -5,8 +5,8 @@ import { useRouter } from "next/router";
 const Detail = () => {
   const router = useRouter();
 
-  const handleEdit = (): void => {
-    router.push(`/edit/${router.query.id}`);
+  const handleDelete = (): void => {
+    router.push("/");
   };
 
   return (
@@ -16,12 +16,10 @@ const Detail = () => {
       <ScrollContents>
         <section>내용</section>
         <ButtonsBox>
-          <section onClick={handleEdit}>
+          <Link href={`/edit/${router.query.id}`}>
             <Button>수정</Button>
-          </section>
-          <Link href="/">
-            <Button>삭제</Button>
           </Link>
+          <Button onClick={handleDelete}>삭제</Button>
         </ButtonsBox>
       </ScrollContents>
     </Container>

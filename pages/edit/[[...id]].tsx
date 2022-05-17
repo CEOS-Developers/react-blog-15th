@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/router";
 
 const Edit = () => {
@@ -8,9 +8,9 @@ const Edit = () => {
   const [title, setTitle] = useState("default title");
   const [content, setContent] = useState("default content");
 
-  useEffect(() => {
-    console.log(router.query.id);
-  }, []);
+  const handleSubmit = (): void => {
+    router.push(`/detail/${router.query.id ? router.query.id : "1001"}`);
+  };
 
   return (
     <Container>
@@ -20,9 +20,7 @@ const Edit = () => {
         onChange={(e) => setContent(e.target.value)}
       />
       <Buttons>
-        <Link href="/detail/1">
-          <Button>수정완료</Button>
-        </Link>
+        <Button onClick={handleSubmit}>수정완료</Button>
         <Link href="/">
           <Button>취소</Button>
         </Link>
