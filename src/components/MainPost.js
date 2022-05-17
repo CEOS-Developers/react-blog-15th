@@ -1,3 +1,5 @@
+//메인 화면에서 보이는 포스트
+
 import styled from "styled-components";
 import React from "react";
 
