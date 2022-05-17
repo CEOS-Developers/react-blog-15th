@@ -16,6 +16,9 @@ const Detail = () => {
       <ScrollContents>
         <section>내용</section>
         <ButtonsBox>
+          <Link href="/">
+            <Button>목록</Button>
+          </Link>
           <Link href={`/edit/${router.query.id}`}>
             <Button>수정</Button>
           </Link>
