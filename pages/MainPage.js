@@ -4,9 +4,12 @@ import Link from 'next/link';
 import MainPost from "../src/components/MainPost";
 import data from "../src/data/data.json";
 import { useRouter} from "next/router";
-
+import { useRecoilValue } from "recoil";
+import { PostListState } from "../src/recoil/recoil";
 export default function MainPage(){
 
+    const currentPostList = useRecoilValue(PostListState);
+    
     return(
         <>
         <Container>
@@ -15,7 +18,7 @@ export default function MainPage(){
                 <PostingButton>포스트 쓰기</PostingButton>
             </Link>
 
-            {data.map(({title,date,content,id})=>
+            {currentPostList.map(({title,date,content,id})=>
             {
                 return(
                 <>

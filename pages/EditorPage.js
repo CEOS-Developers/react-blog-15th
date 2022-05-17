@@ -6,6 +6,8 @@ import styled from 'styled-components';
 import getInputDate from '../src/hooks/getInputDate';
 import useInput from '../src/hooks/useInput';
 import data from '../src/data/data.json';
+import { useRecoilState } from 'recoil';
+import { PostListState } from '../src/recoil/recoil';
 
 function EditorPage() {
   const { inputText, onInputChange, reset } = useInput();
@@ -16,7 +18,7 @@ function EditorPage() {
     date: '',
     milisec: '',
   }, 나중에 타입으로 지정*/
-  const [postList, setPostList] = useState(data);
+  const [postList, setPostList] = useRecoilState(PostListState);
 
   const handleNewPost = (e) => {
     e.preventDefault();
