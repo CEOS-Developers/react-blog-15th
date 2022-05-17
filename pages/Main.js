@@ -10,7 +10,9 @@ export default function Main(){
         <>
         <Container>
             <Header>나의 블로그</Header>
-            <PostingButton>포스트 쓰기</PostingButton>
+            <Link href="/Editor">
+                <PostingButton>포스트 쓰기</PostingButton>
+            </Link>
 
             {data.map(({title,data,content})=>
             <Link href={`/Details/${encodeURIComponent(title)}`}>
