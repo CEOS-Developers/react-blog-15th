@@ -1,12 +1,20 @@
-//메인화면에서 보이는 포스트
+//상세화면에서 보이는 포스트
 
 import styled from "styled-components";
 import React from "react";
+import data from '../data/data.json'
 
-const DetailedPost = ({ title,date,content }) => {
-   return (
-      <PostWrapper title={title} date={date} content={content}>
-      {title} {date} {content}
+const DetailedPost = (numbering) => {
+  const [postObj] = data.filter((post) => post.id === numbering); //id를 이용해서 post filter
+
+    const title = postObj.title; //각 내용들 변수에 저장
+    const content = postObj.content;
+    const date = postObj.date;
+   
+  
+  return (
+      <PostWrapper>
+      {title}
       </PostWrapper>
 );
   }

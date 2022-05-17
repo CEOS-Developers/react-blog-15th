@@ -5,31 +5,32 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import getInputDate from '../src/hooks/getInputDate';
 import useInput from '../src/hooks/useInput';
+import data from '../src/data/data.json';
 
 function EditorPage() {
   const { inputText, onInputChange, reset } = useInput();
-
-  const [postList, setPostList] = useState([
-    {
-      title: '',
-      content: '',
-      date: '',
-      milisec: '',
-    },
-  ]);
+  /*
+  {
+    title: '',
+    content: '',
+    date: '',
+    milisec: '',
+  }, 나중에 타입으로 지정*/
+  const [postList, setPostList] = useState(data);
 
   const handleNewPost = (e) => {
     e.preventDefault();
 
     if (inputText) {
       const post = {
+        id: postList.length,
         title: inputText.title,
         content: inputText.content,
         date: getInputDate(),
         milisec: Date.now().toString(),
       };
 
-      setPostList([...postList, post]);
+      setPostList(postList => [...postList,post]);
       console.log(postList);
       reset();
     }
@@ -56,7 +57,7 @@ function EditorPage() {
             placeholder="본문"
             spellCheck="false"
           />
-          <PostingButton onClick={handleNewPost}>포스트 수정</PostingButton>
+          <PostingButton onClick={handleNewPost}>포스트 등록</PostingButton>
         </Form>
       </Container>
     </>
@@ -85,7 +86,7 @@ const Title = styled.input`
   border-bottom: 1px solid grey;
   padding: 5px;
 `;
-const Content = styled.textarea`
+const Content = styled.input`
   font-size: 15px;
   border-bottom: 1px solid grey;
   padding: 5px;

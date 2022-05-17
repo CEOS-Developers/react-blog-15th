@@ -15,7 +15,6 @@ function DetailContainer(){
     const date = postObj.date;
     return(
         <>
-        <div>{id}</div>
         <div>{title}</div>
         <div>{content}</div>
         <div>{date}</div>

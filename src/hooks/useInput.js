@@ -8,11 +8,11 @@ const useInput = () => {
   });
 
   const onInputChange = (e) => {
-    setInputText({ [e.target.name]: e.target.value });
+    setInputText({...inputText,[e.target.name]: e.target.value });
   };
 
   const reset = () => {
-    setInputText('');
+    setInputText({title:'', content: ''});
   };
 
   return { inputText, onInputChange, reset };
