@@ -1,11 +1,9 @@
 import React from 'react';
-import MainPage from '../pages/MainPage'
-import Link from 'next/link'
+import EditorPage from '../pages/EditorPage';
+import Link from 'next/link';
 
 const Index = () => {
-  return (
-    <MainPage/>
-  );
+  return <EditorPage />;
 };
 
 export default Index;
