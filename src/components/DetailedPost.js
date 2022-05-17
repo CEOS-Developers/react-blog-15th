@@ -3,7 +3,7 @@
 import styled from "styled-components";
 import React from "react";
 
-const DetailsPost = ({ title,date,content }) => {
+const DetailedPost = ({ title,date,content }) => {
     return (
       <PostWrapper title={title} date={date} content={content}>
       {title} {date} {content}
@@ -17,4 +17,4 @@ const PostWrapper = styled.section`
     border-bottom:1px solid grey;
     padding:5px;
     `
-export default DetailsPost;
+export default DetailedPost;

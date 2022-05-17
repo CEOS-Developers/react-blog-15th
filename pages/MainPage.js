@@ -4,7 +4,7 @@ import Link from 'next/link';
 import MainPost from "../src/components/MainPost";
 import data from "../src/data/data.json";
 
-export default function Main(){
+export default function MainPage(){
 
     return(
         <>

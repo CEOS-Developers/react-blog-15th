@@ -9,7 +9,7 @@ import { useParams } from 'react-router-dom';
 
 import data from "../data/data.json"
 
-const Details = ({ title,date, content }) => {
+const DetailedPage = ({ title,date, content }) => {
     const { milisec } = useParams();
     const [postObj] = data.filter((post) => post.milisec === milisec);
     const [currentPost, setcurrentPost] = useState(postObj);
@@ -21,4 +21,4 @@ const Details = ({ title,date, content }) => {
 );
   }
 
-  export default Details;
+  export default DetailedPage;

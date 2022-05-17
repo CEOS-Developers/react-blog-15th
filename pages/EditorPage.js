@@ -4,7 +4,7 @@
 import { useCallback, useState,useRef, useEffect} from "react";
 import styled from "styled-components";
 
-function Editor(){
+function EditorPage(){
 
     const [title, setTitle] = useState(""); //useState를 활용해서 title 관리
     const [content, setContent] = useState(""); //useState를 활용해서 editor 관리
@@ -90,4 +90,4 @@ function Editor(){
     
 }
 
-export default Editor;
+export default EditorPage;
