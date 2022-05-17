@@ -6,7 +6,9 @@ function DetailContainer(){
     const {id} = router.query;
 
     return(
+        <>
         <div>{id}</div>
+        </>
     );
 }
 

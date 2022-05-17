@@ -3,8 +3,8 @@ import styled from "styled-components";
 import Link from 'next/link';
 import MainPost from "../src/components/MainPost";
 import data from "../src/data/data.json";
-import { useRouter
- } from "next/router";
+import { useRouter} from "next/router";
+
 export default function MainPage(){
 
     return(
@@ -15,11 +15,18 @@ export default function MainPage(){
                 <PostingButton>포스트 쓰기</PostingButton>
             </Link>
 
-            {data.map(({title,date,content})=>
-            <Link href={"/DetailedContainer/[id]"} as = {`/DetailedContainer/${title}`}>
-            <MainPost title={title} date={date} content={content}/>
-            </Link>)}
-            
+            {data.map(({title,date,content,id})=>
+            {
+                return(
+                <>
+                <Link key={id} href={"/DetailedContainer/[id]"} as = {`/DetailedContainer/${id}`}>
+               <a>{title}</a>
+               </Link>
+               <MainPost title={title} date={date} content={content}/>
+            </>
+            );
+            }
+            )}
         </Container>
         
         </>
