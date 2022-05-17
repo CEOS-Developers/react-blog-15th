@@ -16,5 +16,6 @@ const PostWrapper = styled.section`
     font-size:15px;
     border-bottom:1px solid grey;
     padding:5px;
+    cursor:pointer;
     `
 export default MainPost;

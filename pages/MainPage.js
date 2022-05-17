@@ -3,7 +3,8 @@ import styled from "styled-components";
 import Link from 'next/link';
 import MainPost from "../src/components/MainPost";
 import data from "../src/data/data.json";
-
+import { useRouter
+ } from "next/router";
 export default function MainPage(){
 
     return(
@@ -15,7 +16,7 @@ export default function MainPage(){
             </Link>
 
             {data.map(({title,date,content})=>
-            <Link href={`/DetailsPage/${encodeURIComponent(title)}`}>
+            <Link href={"/DetailedContainer/[id]"} as = {`/DetailedContainer/${title}`}>
             <MainPost title={title} date={date} content={content}/>
             </Link>)}
             
