@@ -1,20 +1,36 @@
 import styled from "styled-components";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useAppSelector } from "../../hooks/useAppSelector";
+import { useState, useEffect } from "react";
 
 const Detail = () => {
   const router = useRouter();
+  const [post, setPost] = useState({
+    id: "",
+    title: "",
+    content: "",
+    date: "",
+  });
+  const posts = useAppSelector((state) => state.post.posts);
 
   const handleDelete = (): void => {
     router.push("/");
   };
 
+  useEffect(() => {
+    console.log(posts, router.query.id);
+    const idx = posts.findIndex((post) => post.id === router.query.id);
+    console.log(idx);
+    setPost(posts[idx]);
+  }, []);
+
   return (
     <Container>
-      <Title>title</Title>
-      <Date>2022-05-16 00:00</Date>
+      <Title>{post.title}</Title>
+      <Date>{post.date}</Date>
       <ScrollContents>
-        <section>내용</section>
+        <section>{post.content}</section>
         <ButtonsBox>
           <Link href="/">
             <Button>목록</Button>

@@ -1,48 +1,53 @@
 import styled from "styled-components";
 import Link from "next/link";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
+import { useAppSelector } from "../../hooks/useAppSelector";
+import { useAppDispatch } from "../../hooks/useAppDispatch";
 import { useRouter } from "next/router";
-
-const posts = [
-  {
-    id: 1,
-    title: "title",
-    content: "content",
-    date: "2022-05-17 11:00",
-  },
-];
+import { addPost, updatePost } from "../../store/modules/post";
 
 const Edit = () => {
   const router = useRouter();
-  const [input, setInput] = useState({
-    title: "default title",
-    content: "default content",
-  });
+  const dispatch = useAppDispatch();
+  const posts = useAppSelector((state) => state.post.posts);
+  const [input, setInput] = useState({ title: "", content: "" });
   const { title, content } = input;
 
   const handleSubmit = (): void => {
-    if (router.query.id) {
-      const idx = posts.findIndex(
-        (post) => post.id === Number(router.query.id)
-      );
-      const cur = new Date();
-      const date = `${cur.getFullYear()}-${String(cur.getMonth() + 1).padStart(
-        2,
-        "0"
-      )}-${String(cur.getDay()).padStart(
-        2,
-        "0"
-      )} ${cur.getHours()}:${cur.getMinutes()}`;
-      posts[idx] = { ...posts[idx], title, content, date };
+    const idx = posts.findIndex((post) => post.id === router.query.id);
+    const cur = new Date();
+    const date = `${cur.getFullYear()}-${String(cur.getMonth() + 1).padStart(
+      2,
+      "0"
+    )}-${String(cur.getDay()).padStart(
+      2,
+      "0"
+    )} ${cur.getHours()}:${cur.getMinutes()}`;
+    const postObj = {
+      id: String(router.query.id),
+      title,
+      content,
+      date,
+    };
+    if (idx === -1) {
+      dispatch(addPost(postObj));
+    } else {
+      dispatch(updatePost(postObj));
     }
-    console.log(posts);
-    router.push(`/detail/${router.query.id ? router.query.id : "1001"}`);
+    router.push(`/detail/${router.query.id}`);
   };
   const handleInputChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ): void => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
+
+  useEffect(() => {
+    const idx = posts.findIndex((post) => String(post.id) === router.query.id);
+    if (idx !== -1) {
+      setInput({ title: posts[idx].title, content: posts[idx].content });
+    }
+  }, []);
 
   return (
     <Container>
@@ -53,7 +58,7 @@ const Edit = () => {
         onChange={handleInputChange}
       />
       <Buttons>
-        <Button onClick={handleSubmit}>수정완료</Button>
+        <Button onClick={handleSubmit}>작성완료</Button>
         <Link href="/">
           <Button>취소</Button>
         </Link>

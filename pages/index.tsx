@@ -1,8 +1,18 @@
 import type { NextPage } from "next";
 import styled from "styled-components";
 import Link from "next/link";
+import { useAppSelector } from "../hooks/useAppSelector";
+import { v4 as uuid } from "uuid";
+import { useRouter } from "next/router";
 
 const Home: NextPage = () => {
+  const posts = useAppSelector((state) => state.post.posts);
+  const router = useRouter();
+
+  const handleRouting = (): void => {
+    router.push(`/edit/${uuid()}`);
+  };
+
   return (
     <Container>
       <Div>
@@ -10,6 +20,12 @@ const Home: NextPage = () => {
         <Link href={`/example/page`}>
           <a>{"샘플 페이지로 링크"}</a>
         </Link>
+        {posts.map((post) => (
+          <Link key={post.id} href={`/detail/${post.id}`}>
+            <a>{post.title}</a>
+          </Link>
+        ))}
+        <a onClick={handleRouting}>작성</a>
       </Div>
     </Container>
   );
