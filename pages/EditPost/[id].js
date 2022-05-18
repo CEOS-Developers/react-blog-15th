@@ -10,17 +10,20 @@ import { Container, Header } from '../../src/GlobalStyle';
 
 function EditPost() {
   const { onInputChange, reset } = useInput();
+  const router = useRouter();
+  const navigateHome = () => router.push('/MainPage');
 
   const [postList, setPostList] = useRecoilState(PostListState);
 
-  const router = useRouter();
   const { id } = router.query;
   const numbering = Number(id);
   const [postObj] = postList.filter((post) => post.id === numbering); //id를 이용해서 post filter
 
+  const savedTitle = postObj?.title;
+  const savedContent = postObj?.content;
   const [inputText, setInputText] = useState({
-    title: postObj.title,
-    content: postObj.content,
+    title: savedTitle,
+    content: savedContent,
   });
 
   const handleNewPost = (e) => {
@@ -42,6 +45,7 @@ function EditPost() {
     } else {
       alert('입력하세요!');
     }
+    navigateHome();
   };
 
   return (
@@ -55,7 +59,7 @@ function EditPost() {
               name="title"
               value={inputText.title}
               onChange={onInputChange}
-              placeholder={postObj.title}
+              placeholder={savedTitle}
               spellCheck="false"
             />
             <Content
@@ -63,7 +67,7 @@ function EditPost() {
               name="content"
               value={inputText.content}
               onChange={onInputChange}
-              placeholder={postObj.content}
+              placeholder={savedContent}
               spellCheck="false"
             />
           </InputWrapper>
