@@ -5,7 +5,6 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import getInputDate from '../src/hooks/getInputDate';
 import useInput from '../src/hooks/useInput';
-import data from '../src/data/data.json';
 import { useRecoilState } from 'recoil';
 import { PostListState } from '../src/recoil/recoil';
 import { Container, Header } from '../src/GlobalStyle';

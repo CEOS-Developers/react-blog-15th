@@ -2,8 +2,6 @@
 import styled from 'styled-components';
 import Link from 'next/link';
 import MainPost from '../src/components/MainPost';
-import data from '../src/data/data.json';
-import { useRouter } from 'next/router';
 import { useRecoilValue } from 'recoil';
 import { PostListState } from '../src/recoil/recoil';
 import { Header } from '../src/GlobalStyle';

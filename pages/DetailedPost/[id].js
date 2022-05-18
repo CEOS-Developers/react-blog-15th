@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import { useRecoilValue } from 'recoil';
 import { PostListState } from '../../src/recoil/recoil';
+import Link from 'next/link';
 
 function DetailContainer() {
   const router = useRouter();
@@ -18,6 +19,9 @@ function DetailContainer() {
       <div>{title}</div>
       <div>{content}</div>
       <div>{date}</div>
+      <Link key={id} href={'/DetailedPost/[id]'} as={`/DetailedPost/${id}`}>
+        <a>{title}</a>
+      </Link>
     </>
   );
 }
