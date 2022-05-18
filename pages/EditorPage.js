@@ -9,7 +9,7 @@ import { useRecoilState } from 'recoil';
 import { PostListState } from '../src/recoil/recoil';
 import { Container, Header } from '../src/GlobalStyle';
 
-function EditorPage() {
+function EditorPage(PostId) {
   const { inputText, onInputChange, reset } = useInput();
   /*
   {

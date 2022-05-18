@@ -20,6 +20,16 @@
       "static/chunks/main.js",
       "static/chunks/pages/DetailedPost/[id].js"
     ],
+    "/EditorPage": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/EditorPage.js"
+    ],
+    "/MainPage": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/MainPage.js"
+    ],
     "/ModifiedPost/[id]": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
