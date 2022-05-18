@@ -2,6 +2,7 @@
 //디테일 페이지에서 클릭하면 기존에 작성된 내용을 에디터 페이지로 불러오기+삭제
 
 import { useState } from 'react';
+import { useRouter } from 'next/router';
 import styled from 'styled-components';
 import getInputDate from '../src/hooks/getInputDate';
 import useInput from '../src/hooks/useInput';
@@ -10,6 +11,8 @@ import { PostListState } from '../src/recoil/recoil';
 import { Container, Header } from '../src/GlobalStyle';
 
 function EditorPage() {
+  const router = useRouter();
+  const navigateHome = () => router.push('/MainPage');
   const { inputText, onInputChange, reset } = useInput();
   /*
   {
@@ -37,6 +40,7 @@ function EditorPage() {
     } else {
       alert('입력하세요!');
     }
+    navigateHome();
   };
 
   return (
