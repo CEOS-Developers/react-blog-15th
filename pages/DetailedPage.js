@@ -3,22 +3,26 @@
 
 //상세보기 화면에서 나타나는 포스트
 
-import styled from "styled-components";
-import React,{ useState } from "react";
+import styled from 'styled-components';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import data from "../data/data.json"
+import data from '../data/data.json';
 
-const DetailedPage = ({ title,date, content }) => {
-    const { milisec } = useParams();
-    const [postObj] = data.filter((post) => post.milisec === milisec);
-    const [currentPost, setcurrentPost] = useState(postObj);
+const DetailedPage = ({ title, date, content }) => {
+  const { id } = useParams();
+  const [postObj] = data.filter((post) => post.id === id);
+  const [currentPost, setcurrentPost] = useState(postObj);
 
-    return (
-      <PostWrapper title={currentPost.title} date={currentPost.date} content={currentPost.content}>
+  return (
+    <PostWrapper
+      title={currentPost.title}
+      date={currentPost.date}
+      content={currentPost.content}
+    >
       {title} {date} {content}
-      </PostWrapper>
-);
-  }
-  
-  export default DetailedPage;
+    </PostWrapper>
+  );
+};
+
+export default DetailedPage;

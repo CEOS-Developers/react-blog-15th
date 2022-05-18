@@ -8,7 +8,7 @@ import useInput from '../src/hooks/useInput';
 import data from '../src/data/data.json';
 import { useRecoilState } from 'recoil';
 import { PostListState } from '../src/recoil/recoil';
-import{Container,Header} from '../src/GlobalStyle';
+import { Container, Header } from '../src/GlobalStyle';
 
 function EditorPage() {
   const { inputText, onInputChange, reset } = useInput();
@@ -26,45 +26,42 @@ function EditorPage() {
 
     if (inputText) {
       const post = {
-        id: postList.length,
         title: inputText.title,
         content: inputText.content,
         date: getInputDate(),
-        milisec: Date.now().toString(),
+        id: Date.now(),
       };
 
-      setPostList(postList => [...postList,post]);
+      setPostList((postList) => [...postList, post]);
       console.log(postList);
       reset();
-    }
-
-    else{
-      alert("입력하세요!");
+    } else {
+      alert('입력하세요!');
     }
   };
 
   return (
     <>
-        <Container>
+      <Container>
         <Header>블로그 글쓰기</Header>
         <Form>
           <InputWrapper>
-          <Title
-            type="text"
-            name="title"
-            value={inputText.title}
-            onChange={onInputChange}
-            placeholder="제목"
-            spellCheck="false"
-          />
-          <Content
-            type="text"
-            name="content"
-            value={inputText.content}
-            onChange={onInputChange}
-            placeholder="본문"
-            spellCheck="false"
-          />
+            <Title
+              type="text"
+              name="title"
+              value={inputText.title}
+              onChange={onInputChange}
+              placeholder="제목"
+              spellCheck="false"
+            />
+            <Content
+              type="text"
+              name="content"
+              value={inputText.content}
+              onChange={onInputChange}
+              placeholder="본문"
+              spellCheck="false"
+            />
           </InputWrapper>
           <PostingButton onClick={handleNewPost}>포스트 등록</PostingButton>
         </Form>
@@ -90,10 +87,9 @@ const Content = styled.textarea`
   font-size: 15px;
   border-bottom: 1px solid grey;
   padding: 5px;
-  height:300px;
+  height: 300px;
 `;
 const InputWrapper = styled.div`
-  display:flex;
-  flex-direction:column;
-
-`
+  display: flex;
+  flex-direction: column;
+`;

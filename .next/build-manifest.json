@@ -20,11 +20,6 @@
       "static/chunks/main.js",
       "static/chunks/pages/index.js"
     ],
-    "/DetailedContainer/[id]": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/DetailedContainer/[id].js"
-    ],
     "/EditorPage": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
