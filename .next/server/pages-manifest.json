@@ -2,6 +2,7 @@
   "/_app": "pages/_app.js",
   "/_document": "pages/_document.js",
   "/_error": "pages/_error.js",
-  "/MainPage": "pages/MainPage.js",
-  "/EditorPage": "pages/EditorPage.js"
+  "/": "pages/index.js",
+  "/EditorPage": "pages/EditorPage.js",
+  "/DetailedPost/[id]": "pages/DetailedPost/[id].js"
 }

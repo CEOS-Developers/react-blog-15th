@@ -11,9 +11,8 @@ export default function MainPage() {
 
   return (
     <>
-    <Container>
       <Header>나의 블로그</Header>
-
+      <PostListWrapper>
       {currentPostList.map(({ title, date, content, id }) => {
         return (
           <>
@@ -28,11 +27,11 @@ export default function MainPage() {
           </>
         );
       })}
+      </PostListWrapper>
 
       <Link href="/EditorPage">
         <PostingButton>포스트 쓰기</PostingButton>
       </Link>
-    </Container>
     </>
   );
 }
@@ -41,3 +40,7 @@ const PostingButton = styled.button`
   margin: 0.5rem;
   font-size: 15px;
 `;
+
+const PostListWrapper = styled.div`
+   overflow:auto;
+`

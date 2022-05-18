@@ -2,7 +2,8 @@ import { useRouter } from 'next/router';
 import { useRecoilValue, useSetRecoilState} from 'recoil';
 import { PostListState } from '../../src/recoil/recoil';
 import Link from 'next/link';
-import {Container} from '../../src/GlobalStyle';
+import {Container,Header} from '../../src/GlobalStyle';
+import {PostContent,PostDate,PostTitle} from '../../src/DetailPostStyle';
 
 function DetailContainer() {
   const router = useRouter();
@@ -21,15 +22,18 @@ function DetailContainer() {
   };
   return (
     <>
-    <Container>
-      <div>{postObj?.title}</div>
-      <div>{postObj?.content}</div>
-      <div>{postObj?.date}</div>
+      <Container>
+        <Header>나의 블로그</Header>
+      <PostTitle>{postObj?.title}</PostTitle>
+      <PostContent>{postObj?.content}</PostContent>
+      <PostDate>{postObj?.date}</PostDate>
+      
       <Link 
       href={'/ModifiedPost/[id]'}
       as={`/ModifiedPost/${numbering}`}>
-        <button>수정하기</button>
+        <button>Edit</button>
       </Link>
+
       <button onClick={onHandleDelete}>Delete</button>
       </Container>
     </>

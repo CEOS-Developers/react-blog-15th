@@ -8,6 +8,7 @@ import useInput from '../src/hooks/useInput';
 import { useRecoilState } from 'recoil';
 import { PostListState } from '../src/recoil/recoil';
 import { Container, Header } from '../src/GlobalStyle';
+import useNavigateHome from '../src/hooks/useNavigateHome';
 
 function EditorPage(PostId) {
   const { inputText, onInputChange, reset } = useInput();
@@ -19,7 +20,7 @@ function EditorPage(PostId) {
     milisec: '',
   }, 나중에 타입으로 지정*/
   const [postList, setPostList] = useRecoilState(PostListState);
-
+  
   const handleNewPost = (e) => {
     e.preventDefault();
 
