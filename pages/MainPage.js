@@ -20,8 +20,8 @@ export default function MainPage() {
           <>
             <Link
               key={id}
-              href={'/DetailedContainer/[id]'}
-              as={`/DetailedContainer/${id}`}
+              href={'/DetailedPost/[id]'}
+              as={`/DetailedPost/${id}`}
             >
               <a>{title}</a>
             </Link>
