@@ -1,14 +1,12 @@
 import { useRouter } from 'next/router';
-import { useRecoilValue } from 'recoil';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { PostListState } from '../../src/recoil/recoil';
 import Link from 'next/link';
 import {EditorPage} from "../EditorPage";
-import {TestPage} from './TestPage';
 import styled from 'styled-components';
-import useInput from '../src/hooks/useInput';
-import getInputDate from '../src/hooks/getInputDate';
-
-
+import {Container,Header} from '../../src/GlobalStyle';
+import {Form,PostingButton,Title,Content,InputWrapper} from '../EditorPage';
+import {useState} from 'react';
 function ModifiedContainer(){
 
     const router = useRouter();
@@ -16,44 +14,45 @@ function ModifiedContainer(){
     const numbering = Number(id);
 
     const currentPostList = useRecoilValue(PostListState);
+    const modifyPost = useSetRecoilState(PostListState);
+    
     const [postObj] = currentPostList.filter((post) => post.id === numbering); //id를 이용해서 post filter
 
-    const { inputText, onInputChange, reset } = useInput();
-  /*
-  {
-    title: '',
-    content: '',
-    date: '',
-    milisec: '',
-  }, 나중에 타입으로 지정*/
-
-  const handleNewPost = (e) => {
-    e.preventDefault();
-
-    if (inputText) {
-      const post = {
-        title: inputText.title,
-        content: inputText.content,
-        date: getInputDate(),
-        id: Date.now(),
+      const [inputText, setInputText] = useState({
+        title: '',
+        content: '',
+      });
+    
+      const onInputChange = (e) => {
+        setInputText({...inputText,[e.target.name]: e.target.value });
       };
+    
+      const reset = () => {
+        setInputText({title:'', content: ''});
+      };
+    
+    const handleNewPost = (e) => {
+      e.preventDefault();
+      console.log(inputText.title);
+      if (inputText) {
 
-      setPostList((postList) => [...postList, post]);
-      console.log(postList);
-      reset();
-    } else {
-      alert('입력하세요!');
-    }
-  };
-
+          modifyPost(postObj.title = inputText.title); //data 수정이 안되는 문제 발생
+          //postObj.title = inputText.title;
+          modifyPost(postObj.content = inputText.content);
+  
+        reset();
+      } else {
+        alert('입력하세요!');
+      }
+    };
 
     return(
         <>
-    <Container>
-        <Header>블로그 수정하기</Header>
+       <Container>
+        <Header>블로그 글쓰기</Header>
         <Form>
           <InputWrapper>
-            <Title
+          <Title
               type="text"
               name="title"
               value={inputText.title}
@@ -70,13 +69,12 @@ function ModifiedContainer(){
               spellCheck="false"
             />
           </InputWrapper>
-          <PostingButton onClick={handleNewPost}>포스트 등록</PostingButton>
+          <PostingButton onClick={handleNewPost}>포스트 수정</PostingButton>
         </Form>
       </Container>
     </>
     );
 
 }
-
 
 export default ModifiedContainer;

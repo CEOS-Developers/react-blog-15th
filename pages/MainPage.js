@@ -4,13 +4,14 @@ import Link from 'next/link';
 import MainPost from '../src/components/MainPost';
 import { useRecoilValue } from 'recoil';
 import { PostListState } from '../src/recoil/recoil';
-import { Header } from '../src/GlobalStyle';
+import { Container, Header } from '../src/GlobalStyle';
 
 export default function MainPage() {
   const currentPostList = useRecoilValue(PostListState);
 
   return (
     <>
+    <Container>
       <Header>나의 블로그</Header>
 
       {currentPostList.map(({ title, date, content, id }) => {
@@ -23,7 +24,7 @@ export default function MainPage() {
             >
               <a>{title}</a>
             </Link>
-            <MainPost date={date} content={content} />
+            <MainPost date={date} content={content} /> 
           </>
         );
       })}
@@ -31,6 +32,7 @@ export default function MainPage() {
       <Link href="/EditorPage">
         <PostingButton>포스트 쓰기</PostingButton>
       </Link>
+    </Container>
     </>
   );
 }

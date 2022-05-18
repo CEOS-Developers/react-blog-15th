@@ -1,8 +1,11 @@
 import {RecoilRoot} from 'recoil';
+import {Container} from '../src/GlobalStyle';
 
 function MyApp({ Component, pageProps }) {
     return <RecoilRoot>
-        <Component {...pageProps} />
+        <Container>
+         <Component {...pageProps} />
+         </Container>
         </RecoilRoot>
   }
   
