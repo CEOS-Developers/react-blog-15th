@@ -34,7 +34,7 @@ function EditPost() {
         title: inputText.title,
         content: inputText.content,
         date: postObj.date,
-        id: Date.now(),
+        id: postObj.id,
       };
 
       setPostList((postList) => [
