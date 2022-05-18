@@ -22,7 +22,7 @@ function DetailContainer() {
       <div>{postObj?.title}</div>
       <div>{postObj?.content}</div>
       <div>{postObj?.date}</div>
-      <Link href="/EditorPage">
+      <Link key={id} href={'/EditPost/[id]'} as={`/EditPost/${id}`}>
         <button>Edit</button>
       </Link>
       <button onClick={onHandleDelete}>Remove</button>
