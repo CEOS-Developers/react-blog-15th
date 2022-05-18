@@ -19,9 +19,10 @@ function DetailContainer() {
       <div>{title}</div>
       <div>{content}</div>
       <div>{date}</div>
-      <Link key={id} href={'/DetailedPost/[id]'} as={`/DetailedPost/${id}`}>
-        <a>{title}</a>
+      <Link href="/EditorPage">
+        <button>수정하기</button>
       </Link>
+      <button>삭제하기</button>
     </>
   );
 }

@@ -25,6 +25,11 @@
       "static/chunks/main.js",
       "static/chunks/pages/DetailedPost/[id].js"
     ],
+    "/EditorPage": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/EditorPage.js"
+    ],
     "/_app": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
