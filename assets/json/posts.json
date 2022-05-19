@@ -1,0 +1,23 @@
+[
+  {
+    "postId": 1,
+    "data": {
+      "content": "포스트 내용1",
+      "unixTime": 1644809969387
+    }
+  },
+  {
+    "postId": 2,
+    "data": {
+      "content": "포스트 내용1",
+      "unixTime": 1644809969387
+    }
+  },
+  {
+    "postId": 3,
+    "data": {
+      "content": "포스트 내용1",
+      "unixTime": 1644809969387
+    }
+  }
+]
