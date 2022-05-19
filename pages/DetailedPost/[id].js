@@ -1,8 +1,9 @@
+import styled from 'styled-components';
 import { useRouter } from 'next/router';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { PostListState } from '../../src/recoil/recoil';
 import Link from 'next/link';
-import { Container, Header } from '../../src/GlobalStyle';
+import { Container, Header, CenteringWrapper } from '../../src/GlobalStyle';
 import {
   PostContent,
   PostDate,
@@ -28,17 +29,19 @@ function DetailContainer() {
   return (
     <>
       <Header>글 상세보기</Header>
-      <Container>
-        <PostTitle>{postObj?.title}</PostTitle>
-        <PostContent>{postObj?.content}</PostContent>
-        <PostDate>{postObj?.date}</PostDate>
+      <CenteringWrapper>
+        <Container>
+          <PostTitle>{postObj?.title}</PostTitle>
+          <PostContent>{postObj?.content}</PostContent>
+          <PostDate>{postObj?.date}</PostDate>
 
-        <Link key={id} href={'/EditPost/[id]'} as={`/EditPost/${id}`}>
-          <button>Edit</button>
-        </Link>
+          <Link key={id} href={'/EditPost/[id]'} as={`/EditPost/${id}`}>
+            <button>Edit</button>
+          </Link>
 
-        <button onClick={onHandleDelete}>Delete</button>
-      </Container>
+          <button onClick={onHandleDelete}>Delete</button>
+        </Container>
+      </CenteringWrapper>
     </>
   );
 }

@@ -2,7 +2,7 @@ import getInputDate from '../src/hooks/getInputDate';
 import useInput from '../src/hooks/useInput';
 import { useRecoilState } from 'recoil';
 import { PostListState } from '../src/recoil/recoil';
-import { Container, Header } from '../src/GlobalStyle';
+import { Container, Header, CenteringWrapper } from '../src/GlobalStyle';
 import useNavigateHome from '../src/hooks/useNavigateHome';
 import {
   Form,
@@ -45,7 +45,7 @@ function EditorPage() {
   };
 
   return (
-    <>
+    <CenteringWrapper>
       <Header>글 작성하기</Header>
       <Container>
         <Form>
@@ -70,7 +70,7 @@ function EditorPage() {
           <PostingButton onClick={handleNewPost}>포스트 등록</PostingButton>
         </Form>
       </Container>
-    </>
+    </CenteringWrapper>
   );
 }
 

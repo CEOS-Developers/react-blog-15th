@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import useInput from '../../src/hooks/useInput';
 import { useRecoilState } from 'recoil';
 import { PostListState } from '../../src/recoil/recoil';
-import { Container, Header } from '../../src/GlobalStyle';
+import { Container, Header, CenteringWrapper } from '../../src/GlobalStyle';
 import useNavigateHome from '../../src/hooks/useNavigateHome';
 import {
   Form,
@@ -47,7 +47,7 @@ function EditPost() {
   };
 
   return (
-    <>
+    <CenteringWrapper>
       <Header>글 수정하기</Header>
       <Container>
         <Form>
@@ -72,7 +72,7 @@ function EditPost() {
           <PostingButton onClick={handleNewPost}>포스트 등록</PostingButton>
         </Form>
       </Container>
-    </>
+    </CenteringWrapper>
   );
 }
 
