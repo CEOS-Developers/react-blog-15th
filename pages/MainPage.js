@@ -12,20 +12,20 @@ export default function MainPage() {
     <>
       <Header>나의 블로그</Header>
       <PostListWrapper>
-        {currentPostList.map(({ title, date, content, id }) => {
-          return (
-            <>
-              <Link
-                key={id}
-                href={'/DetailedPost/[id]'}
-                as={`/DetailedPost/${id}`}
-              >
-                <a>{title}</a>
-              </Link>
-              <MainPost date={date} content={content} />
-            </>
-          );
-        })}
+      {currentPostList.map(({ title, date, content, id }) => {
+        return (
+          <>
+            <Link
+              key={id}
+              href={'/DetailedPost/[id]'}
+              as={`/DetailedPost/${id}`}
+            >
+              <PostLink>{title}</PostLink>
+            </Link>
+            <MainPost date={date} content={content} /> 
+          </>
+        );
+      })}
       </PostListWrapper>
 
       <Link href="/EditorPage">
@@ -41,5 +41,16 @@ const PostingButton = styled.button`
 `;
 
 const PostListWrapper = styled.div`
-  overflow: auto;
+   overflow:auto;
 `;
+
+const PostLink = styled.a`
+  text-decoration:none;
+  font-size:20px;
+  font-weight:bold;
+  margin-top:0.3rem;
+
+  cursor:pointer;
+
+`;
+
