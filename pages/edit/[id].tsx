@@ -63,6 +63,7 @@ const Edit = () => {
       />
       <ContentInput
         name="content"
+        placeholder="본문을 입력하세요"
         value={content}
         onChange={handleInputChange}
       />
@@ -95,14 +96,12 @@ const ContentInput = styled.textarea`
   width: 100%;
   height: 30rem;
 
-  margin: 0 2rem 1rem 2rem;
-  padding: 1rem 2rem;
+  padding: 0rem 2rem;
   overflow: auto;
   resize: none;
 
   border: none;
   outline: none;
-  border-top: 0.01rem solid grey;
 
   font-size: 1rem;
   line-height: 2rem;
