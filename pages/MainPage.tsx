@@ -7,7 +7,7 @@ import { Container, Header } from '../src/GlobalStyle';
 
 export default function MainPage() {
   const currentPostList = useRecoilValue(PostListState);
-
+  
   return (
     <>
       <Header>Post List</Header>

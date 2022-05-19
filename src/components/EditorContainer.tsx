@@ -12,6 +12,7 @@ import {
 } from '../styles/EditorStyle';
 import getInputDate from '../hooks/getInputDate';
 import useRouting from '../hooks/useRouting';
+import React from 'react';
 
 function EditorContainer() {
   const { inputText, onInputChange, reset } = useInput();
@@ -81,4 +82,4 @@ function EditorContainer() {
   );
 }
 
-export default EditorContainer;
+export default React.memo(EditorContainer);

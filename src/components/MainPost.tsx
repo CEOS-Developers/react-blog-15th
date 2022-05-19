@@ -43,4 +43,4 @@ export const PostDate = styled.div`
   color: grey;
   margin-top:0.3rem;
 `;
-export default MainPost;
+export default React.memo(MainPost);

@@ -1,4 +1,4 @@
-import { ChangeEventHandler, useState } from 'react';
+import { useCallback, useState } from 'react';
 
 const useInput = () => {
   const [inputText, setInputText] = useState({
@@ -6,9 +6,9 @@ const useInput = () => {
     content: '',
   });
 
-  const onInputChange = ((e : React.ChangeEvent<HTMLTextAreaElement>) => {
+  const onInputChange = useCallback((e : React.ChangeEvent<HTMLTextAreaElement>) => {
     setInputText({ ...inputText, [e.target.name]: e.target.value });
-  });
+  },[inputText]);
 
   const reset = () => {
     setInputText({ title: '', content: '' });

@@ -20,6 +20,11 @@
       "static/chunks/main.js",
       "static/chunks/pages/DetailedPost/[id].js"
     ],
+    "/EditPost/[id]": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/EditPost/[id].js"
+    ],
     "/MainPage": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
