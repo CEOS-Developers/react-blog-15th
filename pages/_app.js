@@ -1,13 +1,15 @@
 import { RecoilRoot } from 'recoil';
-import { Container, BlogHeader} from '../src/GlobalStyle';
+import { BlogWrapper, Container, BlogHeader } from '../src/GlobalStyle';
 
 function MyApp({ Component, pageProps }) {
   return (
     <RecoilRoot>
+      <BlogWrapper>
         <Container>
-            <BlogHeader>BLOG</BlogHeader>
-         <Component {...pageProps} />
+          <BlogHeader>Pounder Front-end Blog</BlogHeader>
+          <Component {...pageProps} />
         </Container>
+      </BlogWrapper>
     </RecoilRoot>
   );
 }

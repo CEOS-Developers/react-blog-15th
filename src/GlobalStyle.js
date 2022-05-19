@@ -1,20 +1,19 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
-    
-    width : 1000px;
-    margin 0 auto;
-    `
-export const Header = styled.header`
+export const BlogWrapper = styled.span`
+width : 1000px;
+margin 0 auto;
+display: flex;
+justify-content: center;
+`;
 
-    font-weight:bold;
-    font-size:30px;
-    margin:0.5rem;
-    `
-export const BlogHeader = styled.div`
-    border-radius:10px;
-    height:70px;
-    background : linear-gradient(white, skyblue);
-    font-size:30px;
+export const BlogHeader = styled.h1`
+  font-weight: bold;
+  font-size: 30px;
+`;
 
-`
+export const Header = styled.h2`
+  font-weight: bold;
+  font-size: 20px;
+`;
+export const Container = styled.div``;

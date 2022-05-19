@@ -49,7 +49,7 @@ function EditPost() {
   return (
     <>
       <Container>
-        <Header>블로그 글쓰기</Header>
+        <Header>글 수정하기</Header>
         <Form>
           <InputWrapper>
             <Title
