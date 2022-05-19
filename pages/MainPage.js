@@ -13,13 +13,13 @@ export default function MainPage() {
       <Header>글 목록</Header>
 
       <PostListWrapper>
-        {currentPostList.map(({ title, date, content, id }) => {
+        {currentPostList.map(({ postNum,title, date, content, id }) => {
           return (
             <Container>
               <Link
                 key={id}
                 href={'/DetailedPost/[id]'}
-                as={`/DetailedPost/${id}`}
+                as={`/DetailedPost/${postNum}`}
               >
                 <PostLink>{title}</PostLink>
               </Link>
@@ -27,7 +27,7 @@ export default function MainPage() {
             </Container>
           );
         })}
-        <Link href="/EditorPage">
+        <Link href={'/EditPost/[id]'} as={`/EditPost/0`}>
           <PostingButton>+</PostingButton>
         </Link>
       </PostListWrapper>

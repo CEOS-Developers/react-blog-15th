@@ -2,7 +2,8 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/MainPage": "pages/MainPage.js",
+  "/": "pages/index.js",
+  "/EditPost/[id]": "pages/EditPost/[id].js",
   "/DetailedPost/[id]": "pages/DetailedPost/[id].js",
-  "/EditorPage": "pages/EditorPage.js"
+  "/MainPage": "pages/MainPage.js"
 }

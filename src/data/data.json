@@ -1,5 +1,6 @@
 [
   {
+    "postNum":1,
     "title": "What is Next.js?",
     "date": "2022.05.16.",
     "id": 1519211809934,
@@ -7,18 +8,21 @@
   },
 
   {
+    "postNum":2,
     "title": "What is React?",
     "date": "2022.05.17.",
     "id": 1519211810362,
     "content": "React is a JavaScript library for building interactive user interfaces. By user interfaces, we mean the elements that users see and interact with on-screen."
   },
   {
+    "postNum":3,
     "title": "How Next.js Works",
     "date": "2022.05.18.",
     "id": 1519211811670,
     "content": "The environment where your code runs: Development vs. Production. When your code runs: Build Time vs. Runtime. Where rendering happens: Client vs. Server"
   },
   {
+    "postNum":4,
     "title": "마지막 글",
     "date": "2022.05.19.",
     "id": 1519129853500,
