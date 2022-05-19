@@ -1,6 +1,6 @@
-import { createGlobalStyle } from "styled-components";
-import { reset } from "styled-reset";
-import { media } from "./theme";
+import { createGlobalStyle } from 'styled-components';
+import { reset } from 'styled-reset';
+import { media } from './theme';
 
 export const GlobalStyle = createGlobalStyle`
     ${reset}
@@ -12,12 +12,12 @@ export const GlobalStyle = createGlobalStyle`
         display: none;
     }
     html{
-        font-size: 11px;
+        font-size: 16px;
         -webkit-text-size-adjust: none;
-        font-family: -apple-system,BlinkMacSystemFont,helvetica,Apple SD Gothic Neo,sans-serif;       
+        font-family: 'Noto Sans KR', sans-serif;    
         font-display: fallback;
         ${media.tablet}{
-            font-size: 10px;
+            //font-size: 10px;
         }
         -ms-overflow-style: none;
         scrollbar-width: none;
@@ -51,4 +51,9 @@ export const GlobalStyle = createGlobalStyle`
             display: block;
         }
     }
+
+    a:link { text-decoration: none; }
+    a:visited { text-decoration: none; }
+    a:hover { text-decoration: none; }
+    a:active { text-decoration: none; }
 `;
