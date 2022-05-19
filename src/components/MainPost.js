@@ -12,7 +12,7 @@ const MainPost = ({ date, content }) => {
 
 export const PostWrapper = styled.section`
   border-bottom: 1px solid grey;
-  padding: 5px;
+  padding: 2%;
   cursor: pointer;
 
   display: flex;
@@ -29,6 +29,11 @@ export const PostContent = styled.div`
   margin-top: 0.5rem;
   font-size: 15px;
   flex: 0.3;
+  max-width: 90%px;
+  max-height: 20%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 `;
 export const PostDate = styled.div`
   font-size: 12px;
