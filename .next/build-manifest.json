@@ -15,10 +15,10 @@
     "static/development/_middlewareManifest.js"
   ],
   "pages": {
-    "/EditPost/[id]": [
+    "/DetailedPost/[id]": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/EditPost/[id].js"
+      "static/chunks/pages/DetailedPost/[id].js"
     ],
     "/MainPage": [
       "static/chunks/webpack.js",

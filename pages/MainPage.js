@@ -27,7 +27,7 @@ export default function MainPage() {
             </Container>
           );
         })}
-        <Link href="/EditorPage">
+        <Link href={'/EditPost/[id]'} as={`/EditPost/0`}>
           <PostingButton>+</PostingButton>
         </Link>
       </PostListWrapper>
