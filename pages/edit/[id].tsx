@@ -1,21 +1,29 @@
 import styled from "styled-components";
-import Link from "next/link";
 import React, { ChangeEvent, useEffect, useState } from "react";
-import { useAppSelector } from "../../hooks/useAppSelector";
-import { useAppDispatch } from "../../hooks/useAppDispatch";
+import Link from "next/link";
 import { useRouter } from "next/router";
+import { GetServerSideProps, GetStaticProps } from "next";
+import { InferGetServerSidePropsType, InferGetStaticPropsType } from "next";
+
+import { useAppDispatch } from "../../hooks/useAppDispatch";
 import { addPost, updatePost } from "../../store/modules/post";
+import { wrapper } from "../../store";
+import { IPost } from "../../store/types";
+import { useAppSelector } from "../../hooks/useAppSelector";
+import { getAllPostIds } from "../../store";
+
 import PostLayout from "../../components/PostLayout";
 
-const Edit = () => {
+const Edit = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const router = useRouter();
   const dispatch = useAppDispatch();
-  const posts = useAppSelector((state) => state.post.posts);
   const [input, setInput] = useState({ title: "", content: "" });
   const { title, content } = input;
 
+  posts = posts ? useAppSelector((state) => state.post.posts) : posts;
+
   const handleSubmit = (): void => {
-    const idx = posts.findIndex((post) => post.id === router.query.id);
+    const idx = posts.findIndex((post: IPost) => post.id === router.query.id);
     const cur = new Date();
     const date = `${String(cur.getMonth() + 1).padStart(2, "0")}-${String(
       cur.getDate()
@@ -46,7 +54,9 @@ const Edit = () => {
   };
 
   useEffect(() => {
-    const idx = posts.findIndex((post) => String(post.id) === router.query.id);
+    const idx = posts.findIndex(
+      (post: IPost) => String(post.id) === router.query.id
+    );
     if (idx !== -1) {
       // post update인 경우
       setInput({ title: posts[idx].title, content: posts[idx].content });
@@ -55,9 +65,15 @@ const Edit = () => {
 
   return (
     <PostLayout>
-      <TitleInput name="title" value={title} onChange={handleInputChange} />
+      <TitleInput
+        name="title"
+        placeholder="제목을 입력하세요"
+        value={title}
+        onChange={handleInputChange}
+      />
       <ContentInput
         name="content"
+        placeholder="본문을 입력하세요"
         value={content}
         onChange={handleInputChange}
       />
@@ -73,32 +89,56 @@ const Edit = () => {
 
 export default Edit;
 
+export const getStaticProps: GetStaticProps = wrapper.getStaticProps(
+  (store) => () => {
+    const posts = store.getState().post.posts;
+    return {
+      props: { posts },
+    };
+  }
+);
+
+export async function getStaticPaths() {
+  const paths = getAllPostIds();
+  return {
+    paths,
+    fallback: true,
+  };
+}
+
 const TitleInput = styled.input`
+  width: 100%;
+  margin: 1rem 0rem 2rem 0rem;
+  padding: 0rem 2rem;
+
   font-size: 2rem;
-  margin: 1.5rem;
-  padding: 0.5rem;
-  width: 47rem;
   border: none;
-  border-bottom: 0.01rem solid grey;
+  font-weight: bold;
+
   :focus {
     outline: none;
   }
 `;
 const ContentInput = styled.textarea`
-  margin: 1.5rem;
-  padding: 0.5rem;
-  width: 47rem;
-  height: 27rem;
-  font-size: 1rem;
+  width: 100%;
+  height: 30rem;
+
+  padding: 0rem 2rem;
+  overflow: auto;
   resize: none;
-  border: 0.01rem solid grey;
-  :focus {
-    outline: none;
-  }
+
+  border: none;
+  outline: none;
+
+  font-size: 1rem;
+  line-height: 2rem;
 `;
 const Buttons = styled.section`
+  width: 100%;
+  height: 3rem;
   display: flex;
   justify-content: flex-end;
+  align-items: center;
 `;
 const Button = styled.a`
   & + & {
