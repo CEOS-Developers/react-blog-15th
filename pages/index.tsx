@@ -56,6 +56,7 @@ const HomeLayout = styled.div`
   border: 0.01rem solid grey;
   border-radius: 1rem;
 
+  background-color: white;
   box-shadow: 0rem 0rem 3rem rgba(0, 0, 0, 0.1);
 `;
 
