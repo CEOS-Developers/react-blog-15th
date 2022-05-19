@@ -9,7 +9,7 @@ import { PostListState } from '../../src/recoil/recoil';
 import { Container, Header } from '../../src/GlobalStyle';
 
 function EditPost() {
-  const { onInputChange, reset } = useInput();
+  const { inputText, onInputChange, reset } = useInput();
   const router = useRouter();
   const navigateHome = () => router.push('/MainPage');
 
@@ -19,12 +19,8 @@ function EditPost() {
   const numbering = Number(id);
   const [postObj] = postList.filter((post) => post.id === numbering); //id를 이용해서 post filter
 
-  const savedTitle = postObj?.title;
-  const savedContent = postObj?.content;
-  const [inputText, setInputText] = useState({
-    title: savedTitle,
-    content: savedContent,
-  });
+  const savedTitle = postObj.title;
+  const savedContent = postObj.content;
 
   const handleNewPost = (e) => {
     e.preventDefault();
@@ -57,7 +53,7 @@ function EditPost() {
             <Title
               type="text"
               name="title"
-              value={inputText.title}
+              defaultValue={savedTitle}
               onChange={onInputChange}
               placeholder={savedTitle}
               spellCheck="false"
@@ -65,7 +61,7 @@ function EditPost() {
             <Content
               type="text"
               name="content"
-              value={inputText.content}
+              defaultValue={savedContent}
               onChange={onInputChange}
               placeholder={savedContent}
               spellCheck="false"
