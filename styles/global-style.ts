@@ -14,7 +14,7 @@ export const GlobalStyle = createGlobalStyle`
     html{
         font-size: 16px;
         -webkit-text-size-adjust: none;
-        font-family: 'Noto Sans KR', sans-serif;    
+        font-family: 'Noto Sans KR', sans-serif;
         font-display: fallback;
         ${media.tablet}{
             //font-size: 10px;
