@@ -1,8 +1,5 @@
 import { useRouter } from 'next/router';
-import { useState } from 'react';
-import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
-import getInputDate from '../../src/hooks/getInputDate';
 import useInput from '../../src/hooks/useInput';
 import { useRecoilState } from 'recoil';
 import { PostListState } from '../../src/recoil/recoil';
@@ -13,10 +10,10 @@ function EditPost() {
   const { inputText, onInputChange, reset } = useInput();
   const [postList, setPostList] = useRecoilState(PostListState);
   const navigateHome = useNavigateHome();
-  
+  const router = useRouter();
   const { id } = router.query;
   const numbering = Number(id);
-  const [postObj] = postList.filter((post) => post.id === numbering); //id를 이용해서 post filter
+  const [postObj] = postList.filter((post) => post.id === numbering);
 
   const savedTitle = postObj.title;
   const savedContent = postObj.content;

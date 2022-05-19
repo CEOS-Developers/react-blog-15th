@@ -1,4 +1,3 @@
-//제목, 본문을 input으로 받고, 작성한 날짜 지정하기
 import { useState } from 'react';
 
 const useInput = () => {
