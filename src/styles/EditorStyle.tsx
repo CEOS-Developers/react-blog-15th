@@ -9,6 +9,12 @@ export const PostHandleButton = styled.button`
   font-size: 15px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border: none;
+
+  cursor: pointer;
+
+  &:hover{
+    opacity:0.5;
+  }
 `;
 export const Title = styled.textarea`
   font-size: 20px;

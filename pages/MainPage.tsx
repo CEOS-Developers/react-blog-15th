@@ -10,9 +10,12 @@ export default function MainPage() {
 
   return (
     <>
-      <Header>글 목록</Header>
-
+      <Header>Post List</Header>
       <PostListWrapper>
+        <Link href={'/EditPost/[id]'} as={`/EditPost/0`}>
+          <PostingButton>+</PostingButton>
+        </Link>
+
         {currentPostList.map(({ postNum,title, date, content, id }) => {
           return (
             <Container>
@@ -27,9 +30,6 @@ export default function MainPage() {
             </Container>
           );
         })}
-        <Link href={'/EditPost/[id]'} as={`/EditPost/0`}>
-          <PostingButton>+</PostingButton>
-        </Link>
       </PostListWrapper>
     </>
   );
@@ -42,10 +42,17 @@ const PostingButton = styled.button`
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border: none;
   border-radius: 100px;
+
+  cursor: pointer;
+
+  &:hover{
+    opacity:0.7;
+    transform: scale(1.3);
+  }
 `;
 
 const PostListWrapper = styled.div`
-  padding: 3%;
+  padding: 1%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -59,4 +66,9 @@ const PostLink = styled.a`
   margin-top: 0.3rem;
 
   cursor: pointer;
+
+  &:hover{
+    opacity:0.2;
+    
+  }
 `;

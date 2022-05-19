@@ -28,7 +28,7 @@ function DetailedContainer() {
   
   return (
     <>
-      <Header>글 상세보기</Header>
+      <Header>My Post</Header>
       <CenteringWrapper>
         <Container>
           <PostTitle>{postObj?.title}</PostTitle>
