@@ -1,10 +1,16 @@
-import styled from 'styled-components';
 import getInputDate from '../src/hooks/getInputDate';
 import useInput from '../src/hooks/useInput';
 import { useRecoilState } from 'recoil';
 import { PostListState } from '../src/recoil/recoil';
 import { Container, Header } from '../src/GlobalStyle';
 import useNavigateHome from '../src/hooks/useNavigateHome';
+import {
+  Form,
+  PostingButton,
+  Title,
+  Content,
+  InputWrapper,
+} from '../src/styles/EditorStyle';
 
 function EditorPage() {
   const navigateHome = useNavigateHome();
@@ -69,25 +75,3 @@ function EditorPage() {
 }
 
 export default EditorPage;
-
-export const Form = styled.form`
-  padding: 10px;
-`;
-export const PostingButton = styled.button`
-  font-size: 15px;
-`;
-export const Title = styled.textarea`
-  font-size: 20px;
-  border-bottom: 1px solid grey;
-  padding: 5px;
-`;
-export const Content = styled.textarea`
-  font-size: 15px;
-  border-bottom: 1px solid grey;
-  padding: 5px;
-  height: 300px;
-`;
-export const InputWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-`;

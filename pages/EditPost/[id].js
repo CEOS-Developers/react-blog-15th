@@ -1,10 +1,16 @@
 import { useRouter } from 'next/router';
-import styled from 'styled-components';
 import useInput from '../../src/hooks/useInput';
 import { useRecoilState } from 'recoil';
 import { PostListState } from '../../src/recoil/recoil';
 import { Container, Header } from '../../src/GlobalStyle';
 import useNavigateHome from '../../src/hooks/useNavigateHome';
+import {
+  Form,
+  PostingButton,
+  Title,
+  Content,
+  InputWrapper,
+} from '../../src/styles/EditorStyle';
 
 function EditPost() {
   const { inputText, onInputChange, reset } = useInput();
@@ -71,25 +77,3 @@ function EditPost() {
 }
 
 export default EditPost;
-
-const Form = styled.form`
-  padding: 10px;
-`;
-const PostingButton = styled.button`
-  font-size: 15px;
-`;
-const Title = styled.textarea`
-  font-size: 20px;
-  border-bottom: 1px solid grey;
-  padding: 5px;
-`;
-const Content = styled.textarea`
-  font-size: 15px;
-  border-bottom: 1px solid grey;
-  padding: 5px;
-  height: 300px;
-`;
-const InputWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-`;

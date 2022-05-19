@@ -3,7 +3,11 @@ import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { PostListState } from '../../src/recoil/recoil';
 import Link from 'next/link';
 import { Container, Header } from '../../src/GlobalStyle';
-import { PostContent, PostDate, PostTitle } from '../../src/DetailPostStyle';
+import {
+  PostContent,
+  PostDate,
+  PostTitle,
+} from '../../src/styles/DetailedPostStyle';
 import useNavigateHome from '../../src/hooks/useNavigateHome';
 
 function DetailContainer() {
