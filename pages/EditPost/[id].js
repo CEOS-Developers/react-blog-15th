@@ -13,7 +13,8 @@ function EditPost() {
   const { inputText, onInputChange, reset } = useInput();
   const [postList, setPostList] = useRecoilState(PostListState);
   const navigateHome = useNavigateHome();
-  
+  const router = useRouter();
+
   const { id } = router.query;
   const numbering = Number(id);
   const [postObj] = postList.filter((post) => post.id === numbering); //id를 이용해서 post filter
