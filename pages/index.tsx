@@ -8,48 +8,48 @@ import Link from 'next/link';
 // 포스트 삭제 기능을 구현합니다.
 
 function Index() {
-    const router = useRouter();
-    const { posts } = postsData;
+  const router = useRouter();
+  const { posts } = postsData;
 
-    return (
-        <Wrapper>
-            <h1>전체 글 보기</h1>
-            <PostBox>
-                {posts.map((post) => (
-                    <Link key={post.postId} href={`/detail/${post.postId}`}>
-                        <a>
-                            <PostItem data={post} />
-                        </a>
-                    </Link>
-                ))}
-            </PostBox>
-        </Wrapper>
-    );
+  return (
+    <Wrapper>
+      <h1>전체 글 보기</h1>
+      <PostBox>
+        {posts.map((post) => (
+          <Link key={post.postId} href={`/detail/${post.postId}`}>
+            <a>
+              <PostItem data={post} />
+            </a>
+          </Link>
+        ))}
+      </PostBox>
+    </Wrapper>
+  );
 }
 
 export default Index;
 
 const Wrapper = styled.div`
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 
-    h1 {
-        color: ${({ theme }) => theme.color.blue};
-        font-size: 2rem;
-        font-weight: 700;
-        padding: 50px 0;
-    }
+  h1 {
+    color: ${({ theme }) => theme.color.blue};
+    font-size: 2rem;
+    font-weight: 700;
+    padding: 50px 0;
+  }
 `;
 
 const PostBox = styled.div`
-    display: grid;
-    grid-gap: 36px;
-    grid-template-columns: 1fr 1fr 1fr;
+  display: grid;
+  grid-gap: 36px;
+  grid-template-columns: 1fr 1fr 1fr;
 
-    ${media.tablet} {
-        grid-template-columns: 1fr 1fr;
-    }
-    ${media.mobile} {
-        grid-template-columns: 1fr;
-    }
+  ${media.tablet} {
+    grid-template-columns: 1fr 1fr;
+  }
+  ${media.mobile} {
+    grid-template-columns: 1fr;
+  }
 `;
