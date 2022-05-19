@@ -12,7 +12,7 @@ function DetailContainer() {
   const numbering = Number(id);
   const currentPostList = useRecoilValue(PostListState);
 
-  const [postObj] = currentPostList.filter((post) => post.id === numbering); //id를 이용해서 post filter
+  const [postObj] = currentPostList.filter((post) => post.id === numbering);
 
   const setPostList = useSetRecoilState(PostListState);
   
@@ -28,9 +28,7 @@ function DetailContainer() {
       <PostContent>{postObj?.content}</PostContent>
       <PostDate>{postObj?.date}</PostDate>
       
-      <Link 
-      href={'/ModifiedPost/[id]'}
-      as={`/ModifiedPost/${numbering}`}>
+      <Link key={id} href={'/EditPost/[id]'} as={`/EditPost/${id}`}>
         <button>Edit</button>
       </Link>
 

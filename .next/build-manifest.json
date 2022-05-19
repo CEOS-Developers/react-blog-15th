@@ -30,6 +30,11 @@
       "static/chunks/main.js",
       "static/chunks/pages/EditorPage.js"
     ],
+    "/MainPage": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/MainPage.js"
+    ],
     "/_app": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
