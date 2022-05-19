@@ -3,7 +3,7 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/": "pages/index.js",
-  "/MainPage": "pages/MainPage.js",
+  "/EditPost/[id]": "pages/EditPost/[id].js",
   "/DetailedPost/[id]": "pages/DetailedPost/[id].js",
-  "/EditPost/[id]": "pages/EditPost/[id].js"
+  "/MainPage": "pages/MainPage.js"
 }
