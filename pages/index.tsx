@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useAppSelector } from "../hooks/useAppSelector";
 import { v4 as uuid } from "uuid";
 import { useRouter } from "next/router";
+import Layout from "../components/Layout";
 
 const Home: NextPage = () => {
   const posts = useAppSelector((state) => state.post.posts);
@@ -14,9 +15,9 @@ const Home: NextPage = () => {
   };
 
   return (
-    <HomeLayout>
+    <Layout>
       <TitleContainer>
-        <Text fontSize="2rem">메모</Text>
+        <Text fontSize="2rem">BLOG</Text>
         <Text fontSize="1rem">{posts.length}개의 글</Text>
       </TitleContainer>
       <ContentContainer>
@@ -37,28 +38,11 @@ const Home: NextPage = () => {
       <ButtonContainer>
         <a onClick={handleRouting}>작성</a>
       </ButtonContainer>
-    </HomeLayout>
+    </Layout>
   );
 };
 
 export default Home;
-
-const HomeLayout = styled.div`
-  height: 40rem;
-  width: 50rem;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-
-  padding: 1rem 0rem;
-  border: 0.01rem solid grey;
-  border-radius: 1rem;
-
-  background-color: white;
-  box-shadow: 0rem 0rem 3rem rgba(0, 0, 0, 0.1);
-`;
 
 const TitleContainer = styled.div`
   width: 100%;
