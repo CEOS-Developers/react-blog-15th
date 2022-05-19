@@ -55,7 +55,12 @@ const Edit = () => {
 
   return (
     <PostLayout>
-      <TitleInput name="title" value={title} onChange={handleInputChange} />
+      <TitleInput
+        name="title"
+        placeholder="제목을 입력하세요"
+        value={title}
+        onChange={handleInputChange}
+      />
       <ContentInput
         name="content"
         value={content}
@@ -74,31 +79,40 @@ const Edit = () => {
 export default Edit;
 
 const TitleInput = styled.input`
+  width: 100%;
+  margin: 1rem 0rem 2rem 0rem;
+  padding: 0rem 2rem;
+
   font-size: 2rem;
-  margin: 1.5rem;
-  padding: 0.5rem;
-  width: 47rem;
   border: none;
-  border-bottom: 0.01rem solid grey;
+  font-weight: bold;
+
   :focus {
     outline: none;
   }
 `;
 const ContentInput = styled.textarea`
-  margin: 1.5rem;
-  padding: 0.5rem;
-  width: 47rem;
-  height: 27rem;
-  font-size: 1rem;
+  width: 100%;
+  height: 30rem;
+
+  margin: 0 2rem 1rem 2rem;
+  padding: 1rem 2rem;
+  overflow: auto;
   resize: none;
-  border: 0.01rem solid grey;
-  :focus {
-    outline: none;
-  }
+
+  border: none;
+  outline: none;
+  border-top: 0.01rem solid grey;
+
+  font-size: 1rem;
+  line-height: 2rem;
 `;
 const Buttons = styled.section`
+  width: 100%;
+  height: 3rem;
   display: flex;
   justify-content: flex-end;
+  align-items: center;
 `;
 const Button = styled.a`
   & + & {

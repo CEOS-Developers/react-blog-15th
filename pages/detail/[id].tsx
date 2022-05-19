@@ -34,46 +34,82 @@ const Detail = () => {
     <PostLayout>
       <Title>{post.title}</Title>
       <Date>{post.date}</Date>
-      <ScrollContents>
-        <Content>{post.content}</Content>
-        <ButtonsBox>
-          <Link href="/">
-            <Button>목록</Button>
-          </Link>
-          <Link href={`/edit/${router.query.id}`}>
-            <Button>수정</Button>
-          </Link>
-          <Button onClick={handleDelete}>삭제</Button>
-        </ButtonsBox>
-      </ScrollContents>
+      <Content>{post.content}</Content>
+      <ButtonsBox>
+        <Link href="/">
+          <Button>목록</Button>
+        </Link>
+        <Link href={`/edit/${router.query.id}`}>
+          <Button>수정</Button>
+        </Link>
+        <Button onClick={handleDelete}>삭제</Button>
+      </ButtonsBox>
     </PostLayout>
   );
 };
 
 export default Detail;
 
-const Title = styled.p`
+const Title = styled.div`
+  width: 100%;
+  margin: 1rem 0rem;
+  padding: 0rem 2rem;
+
   font-size: 2rem;
-  margin: 2rem;
+  font-weight: bold;
 `;
-const Date = styled.p`
+const Date = styled.div`
+  width: 100%;
   display: flex;
-  justify-content: flex-end;
-  margin: 2rem;
-`;
-const ScrollContents = styled.section`
-  height: 30rem;
-  margin: 0 2rem 1rem 2rem;
-  overflow: auto;
+  justify-content: flex-start;
+
+  margin: 0rem 0rem 2rem 0rem;
+  padding: 0rem 2rem;
+
+  font-size: 0.8rem;
+  color: rgba(0, 0, 0, 0.8);
 `;
 const Content = styled.section`
+  width: 100%;
+  height: 30rem;
+
+  padding: 1rem 2rem;
+  border-top: 0.01rem solid grey;
+  overflow: auto;
+
   white-space: pre-line;
+  line-height: 2rem;
+
+  overflow-y: scroll;
+  overflow-y: overlay;
+
+  &::-webkit-scrollbar {
+    width: 0.6rem;
+  }
+
+  & ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.08);
+    visibility: hidden;
+  }
+
+  &:hover::-webkit-scrollbar-thumb {
+    visibility: visible;
+    border-radius: 1rem;
+  }
 `;
 const ButtonsBox = styled.section`
+  width: 100%;
+  height: 3rem;
   display: flex;
   justify-content: flex-end;
-  margin-top: 3rem;
+  align-items: center;
+
+  padding: 0rem 2rem;
 `;
 const Button = styled.a`
-  margin: 1rem;
+  margin-left: 1rem;
 `;

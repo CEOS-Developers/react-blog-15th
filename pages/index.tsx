@@ -138,7 +138,7 @@ const ContentBody = styled.div`
   display: flex;
   align-items: center;
 
-  margin: 0rem 0rem 1rem 0rem;
+  margin: 0rem 0rem 1.5rem 0rem;
   font-size: 0.8rem;
   color: rgba(0, 0, 0, 0.5);
   overflow: hidden;
