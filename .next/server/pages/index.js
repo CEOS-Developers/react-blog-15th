@@ -436,7 +436,7 @@ module.exports = require("styled-components");
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('[{"title":"첫 글","date":"2022.05.16.","id":1519211809934,"content":"와! 내용이다!"},{"title":"다음 글","date":"2022.05.17.","id":1519211810362,"content":"와! 내용 고갈!"},{"title":"다다음 글","date":"2022.05.18.","id":1519211811670,"content":"이제 긴 긴 긴 긴 긴 내용~"},{"title":"마지막 글","date":"2022.05.19.","id":1519129853500,"content":"두비두밥"}]');
+module.exports = JSON.parse('[{"title":"What is Next.js?","date":"2022.05.16.","id":1519211809934,"content":"Next.js is a React framework that gives you building blocks to create web applications. By framework, we mean Next.js handles the tooling and configuration needed for React, and provides additional structure, features, and optimizations for your application."},{"title":"What is React?","date":"2022.05.17.","id":1519211810362,"content":"React is a JavaScript library for building interactive user interfaces. By user interfaces, we mean the elements that users see and interact with on-screen."},{"title":"How Next.js Works","date":"2022.05.18.","id":1519211811670,"content":"The environment where your code runs: Development vs. Production. When your code runs: Build Time vs. Runtime. Where rendering happens: Client vs. Server"},{"title":"마지막 글","date":"2022.05.19.","id":1519129853500,"content":"두비두밥"}]');
 
 /***/ })
 
