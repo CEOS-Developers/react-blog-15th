@@ -1,17 +1,15 @@
-import {RecoilRoot} from 'recoil';
-import {Container,Header,BlogHeader} from '../src/GlobalStyle';
-import {Menu} from '../src/Menu';
+import { RecoilRoot } from 'recoil';
+import { Container, BlogHeader} from '../src/GlobalStyle';
 
 function MyApp({ Component, pageProps }) {
-    return (
+  return (
     <RecoilRoot>
         <Container>
             <BlogHeader>BLOG</BlogHeader>
          <Component {...pageProps} />
         </Container>
     </RecoilRoot>
-    );
-  }
-  
-  export default MyApp
-  
+  );
+}
+
+export default MyApp;

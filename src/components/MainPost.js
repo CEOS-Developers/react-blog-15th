@@ -1,5 +1,3 @@
-//메인 화면에서 보이는 포스트
-
 import styled from 'styled-components';
 import React from 'react';
 
@@ -21,11 +19,11 @@ export const PostWrapper = styled.section`
   flex-direction: column;
 `;
 export const PostTitle = styled.div`
-  margin-top:0.2rem;
+  margin-top: 0.2rem;
   font-size: 25px;
   font-weight: bold;
   flex: 0.3;
-  border-bottom:1px solid grey
+  border-bottom: 1px solid grey;
 `;
 export const PostContent = styled.div`
   margin-top: 0.5rem;

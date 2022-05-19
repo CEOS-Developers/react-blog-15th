@@ -14,7 +14,7 @@ export const Header = styled.header`
 export const BlogHeader = styled.div`
     border-radius:10px;
     height:70px;
-    background : linear-gradient(white, blue);
+    background : linear-gradient(white, skyblue);
     font-size:30px;
 
 `

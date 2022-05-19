@@ -1,23 +1,25 @@
 import { useRouter } from 'next/router';
-import { useState } from 'react';
-import { useRecoilValue } from 'recoil';
-import styled from 'styled-components';
-import getInputDate from '../../src/hooks/getInputDate';
 import useInput from '../../src/hooks/useInput';
 import { useRecoilState } from 'recoil';
 import { PostListState } from '../../src/recoil/recoil';
 import { Container, Header } from '../../src/GlobalStyle';
 import useNavigateHome from '../../src/hooks/useNavigateHome';
+import {
+  Form,
+  PostingButton,
+  Title,
+  Content,
+  InputWrapper,
+} from '../../src/styles/EditorStyle';
 
 function EditPost() {
   const { inputText, onInputChange, reset } = useInput();
   const [postList, setPostList] = useRecoilState(PostListState);
   const navigateHome = useNavigateHome();
   const router = useRouter();
-
   const { id } = router.query;
   const numbering = Number(id);
-  const [postObj] = postList.filter((post) => post.id === numbering); //id를 이용해서 post filter
+  const [postObj] = postList.filter((post) => post.id === numbering);
 
   const savedTitle = postObj.title;
   const savedContent = postObj.content;
@@ -75,25 +77,3 @@ function EditPost() {
 }
 
 export default EditPost;
-
-const Form = styled.form`
-  padding: 10px;
-`;
-const PostingButton = styled.button`
-  font-size: 15px;
-`;
-const Title = styled.textarea`
-  font-size: 20px;
-  border-bottom: 1px solid grey;
-  padding: 5px;
-`;
-const Content = styled.textarea`
-  font-size: 15px;
-  border-bottom: 1px solid grey;
-  padding: 5px;
-  height: 300px;
-`;
-const InputWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-`;

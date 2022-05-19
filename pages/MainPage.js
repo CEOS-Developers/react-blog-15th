@@ -1,4 +1,3 @@
-//각 포스트들의 제목과 작성 날짜를 리스트 형태로
 import styled from 'styled-components';
 import Link from 'next/link';
 import MainPost from '../src/components/MainPost';
