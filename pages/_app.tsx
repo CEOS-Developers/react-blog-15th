@@ -5,7 +5,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <RecoilRoot>
       <BlogStyle />
-      <BlogHeader>Pounder Front-end Blog</BlogHeader>
+      <BlogHeader>Pounder💜 Front-end Blog🌟</BlogHeader>
       <Component {...pageProps} />
     </RecoilRoot>
   );

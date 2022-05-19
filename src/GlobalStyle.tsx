@@ -12,7 +12,7 @@ export const BlogHeader = styled.h1`
 
 export const Header = styled.h2`
   font-weight: bold;
-  font-size: 20px;
+  font-size: 25px;
   margin-left: 1rem;
   display: flex;
   flex-direction: column;

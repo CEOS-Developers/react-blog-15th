@@ -29,7 +29,6 @@ export const PostTitle = styled.div`
   flex: 0.3;
 `;
 export const PostContent = styled.div`
-  margin-top: 0.5rem;
   font-size: 15px;
   flex: 0.3;
   max-width: 90%px;
@@ -42,5 +41,6 @@ export const PostDate = styled.div`
   font-size: 12px;
   flex: 0.3;
   color: grey;
+  margin-top:0.3rem;
 `;
-export default MainPost;
+export default React.memo(MainPost);
