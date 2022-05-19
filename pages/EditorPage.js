@@ -6,7 +6,7 @@ import { Container, Header, CenteringWrapper } from '../src/GlobalStyle';
 import useNavigateHome from '../src/hooks/useNavigateHome';
 import {
   Form,
-  PostingButton,
+  PostHandleButton,
   Title,
   Content,
   InputWrapper,
@@ -67,7 +67,9 @@ function EditorPage() {
               spellCheck="false"
             />
           </InputWrapper>
-          <PostingButton onClick={handleNewPost}>포스트 등록</PostingButton>
+          <PostHandleButton onClick={handleNewPost}>
+            포스트 등록
+          </PostHandleButton>
         </Form>
       </Container>
     </CenteringWrapper>

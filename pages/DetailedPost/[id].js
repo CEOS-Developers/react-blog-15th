@@ -10,6 +10,7 @@ import {
   PostTitle,
 } from '../../src/styles/DetailedPostStyle';
 import useNavigateHome from '../../src/hooks/useNavigateHome';
+import { PostHandleButton } from '../../src/styles/EditorStyle';
 
 function DetailContainer() {
   const navigateHome = useNavigateHome();
@@ -36,10 +37,10 @@ function DetailContainer() {
           <PostDate>{postObj?.date}</PostDate>
 
           <Link key={id} href={'/EditPost/[id]'} as={`/EditPost/${id}`}>
-            <button>Edit</button>
+            <PostHandleButton>Edit</PostHandleButton>
           </Link>
 
-          <button onClick={onHandleDelete}>Delete</button>
+          <PostHandleButton onClick={onHandleDelete}>Delete</PostHandleButton>
         </Container>
       </CenteringWrapper>
     </>

@@ -50,6 +50,6 @@ export const BlogStyle = createGlobalStyle`
     background: linear-gradient(330deg, #2ebfff63, rgba(232,166,255,0.91));
   }
   
-    height: 100%;
-    width: 99%;
+  height: 100vh;
+  width: 100vw;
     `;

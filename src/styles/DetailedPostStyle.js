@@ -10,6 +10,7 @@ export const PostWrapper = styled.section`
 `;
 export const PostTitle = styled.section`
   margin-top: 0.2rem;
+  padding-bottom: 1rem;
   font-size: 25px;
   font-weight: bold;
   flex: 0.3;
@@ -17,7 +18,7 @@ export const PostTitle = styled.section`
 `;
 export const PostContent = styled.article`
   margin-top: 0.5rem;
-  font-size: 15px;
+  font-size: 16px;
   flex: 0.3;
   height: 300px;
 `;

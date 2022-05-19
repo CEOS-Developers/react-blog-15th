@@ -36,8 +36,12 @@ export default function MainPage() {
 }
 
 const PostingButton = styled.button`
-  margin: 0.5rem;
+  margin: 1rem;
+  padding: 1rem;
   font-size: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border: none;
+  border-radius: 100px;
 `;
 
 const PostListWrapper = styled.div`
