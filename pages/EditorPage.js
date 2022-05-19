@@ -9,10 +9,10 @@ import useInput from '../src/hooks/useInput';
 import { useRecoilState } from 'recoil';
 import { PostListState } from '../src/recoil/recoil';
 import { Container, Header } from '../src/GlobalStyle';
+import useNavigateHome from '../src/hooks/useNavigateHome';
 
 function EditorPage() {
-  const router = useRouter();
-  const navigateHome = () => router.push('/MainPage');
+  const navigateHome = useNavigateHome();
   const { inputText, onInputChange, reset } = useInput();
   /*
   {
@@ -22,7 +22,7 @@ function EditorPage() {
     milisec: '',
   }, 나중에 타입으로 지정*/
   const [postList, setPostList] = useRecoilState(PostListState);
-
+  
   const handleNewPost = (e) => {
     e.preventDefault();
 
@@ -75,24 +75,24 @@ function EditorPage() {
 
 export default EditorPage;
 
-const Form = styled.form`
+export const Form = styled.form`
   padding: 10px;
 `;
-const PostingButton = styled.button`
+export const PostingButton = styled.button`
   font-size: 15px;
 `;
-const Title = styled.textarea`
+export const Title = styled.textarea`
   font-size: 20px;
   border-bottom: 1px solid grey;
   padding: 5px;
 `;
-const Content = styled.textarea`
+export const Content = styled.textarea`
   font-size: 15px;
   border-bottom: 1px solid grey;
   padding: 5px;
   height: 300px;
 `;
-const InputWrapper = styled.div`
+export const InputWrapper = styled.div`
   display: flex;
   flex-direction: column;
 `;
