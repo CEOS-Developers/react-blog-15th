@@ -1,13 +1,19 @@
 import styled from "styled-components";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useAppSelector } from "../../hooks/useAppSelector";
+import { GetServerSideProps, GetStaticProps } from "next";
+import { InferGetServerSidePropsType, InferGetStaticPropsType } from "next";
+
 import { useAppDispatch } from "../../hooks/useAppDispatch";
-import { useState, useEffect } from "react";
 import { deletePost } from "../../store/modules/post";
+import { wrapper, getAllPostIds } from "../../store";
+import { IPost } from "../../store/types";
+import { useAppSelector } from "../../hooks/useAppSelector";
+
 import PostLayout from "../../components/PostLayout";
 
-const Detail = () => {
+const Detail = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const router = useRouter();
   const dispatch = useAppDispatch();
   const [post, setPost] = useState({
@@ -16,7 +22,8 @@ const Detail = () => {
     content: "",
     date: "",
   });
-  const posts = useAppSelector((state) => state.post.posts);
+
+  posts = posts ? useAppSelector((state) => state.post.posts) : posts;
 
   const handleDelete = (): void => {
     dispatch(deletePost(String(router.query.id)));
@@ -24,7 +31,7 @@ const Detail = () => {
   };
 
   useEffect(() => {
-    const idx = posts.findIndex((post) => post.id === router.query.id);
+    const idx = posts.findIndex((post: IPost) => post.id === router.query.id);
     if (idx !== -1) {
       setPost(posts[idx]);
     }
@@ -49,6 +56,23 @@ const Detail = () => {
 };
 
 export default Detail;
+
+export const getStaticProps: GetStaticProps = wrapper.getStaticProps(
+  (store) => () => {
+    const posts = store.getState().post.posts;
+    return {
+      props: { posts },
+    };
+  }
+);
+
+export async function getStaticPaths() {
+  const paths = getAllPostIds();
+  return {
+    paths,
+    fallback: true,
+  };
+}
 
 const Title = styled.div`
   width: 100%;

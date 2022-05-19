@@ -1,16 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { HYDRATE } from "next-redux-wrapper";
-
-interface IPost {
-  id: string;
-  title: string;
-  content: string;
-  date: string;
-}
-
-interface IPostState {
-  posts: IPost[];
-}
+import { IPost, IPostState } from "../types";
 
 const initialState = {
   posts: [
@@ -58,8 +48,8 @@ const postSlice = createSlice({
   extraReducers: {
     [HYDRATE]: (state, action) => {
       return {
+        ...action.payload,
         ...state,
-        ...action.payload.subject,
       };
     },
   },
