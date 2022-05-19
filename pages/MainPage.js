@@ -11,10 +11,13 @@ export default function MainPage() {
   return (
     <>
       <Header>글 목록</Header>
+      <Link href="/EditorPage">
+        <PostingButton>포스트 쓰기</PostingButton>
+      </Link>
       <PostListWrapper>
         {currentPostList.map(({ title, date, content, id }) => {
           return (
-            <>
+            <Container>
               <Link
                 key={id}
                 href={'/DetailedPost/[id]'}
@@ -23,14 +26,10 @@ export default function MainPage() {
                 <PostLink>{title}</PostLink>
               </Link>
               <MainPost date={date} content={content} />
-            </>
+            </Container>
           );
         })}
       </PostListWrapper>
-
-      <Link href="/EditorPage">
-        <PostingButton>포스트 쓰기</PostingButton>
-      </Link>
     </>
   );
 }
@@ -41,7 +40,7 @@ const PostingButton = styled.button`
 `;
 
 const PostListWrapper = styled.div`
-  overflow: auto;
+  padding: 3%;
 `;
 
 const PostLink = styled.a`

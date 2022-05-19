@@ -11,8 +11,8 @@ const MainPost = ({ date, content }) => {
 };
 
 export const PostWrapper = styled.section`
-  border-bottom: 1px solid grey;
   padding: 2%;
+  margin: 2%;
   cursor: pointer;
 
   display: flex;
@@ -23,7 +23,6 @@ export const PostTitle = styled.div`
   font-size: 25px;
   font-weight: bold;
   flex: 0.3;
-  border-bottom: 1px solid grey;
 `;
 export const PostContent = styled.div`
   margin-top: 0.5rem;

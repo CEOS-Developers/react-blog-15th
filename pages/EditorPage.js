@@ -46,8 +46,8 @@ function EditorPage() {
 
   return (
     <>
+      <Header>글 작성하기</Header>
       <Container>
-        <Header>글 작성하기</Header>
         <Form>
           <InputWrapper>
             <Title

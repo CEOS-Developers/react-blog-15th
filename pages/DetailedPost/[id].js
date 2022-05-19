@@ -27,8 +27,8 @@ function DetailContainer() {
   };
   return (
     <>
+      <Header>글 상세보기</Header>
       <Container>
-        <Header>글 상세보기</Header>
         <PostTitle>{postObj?.title}</PostTitle>
         <PostContent>{postObj?.content}</PostContent>
         <PostDate>{postObj?.date}</PostDate>

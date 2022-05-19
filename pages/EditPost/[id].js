@@ -48,8 +48,8 @@ function EditPost() {
 
   return (
     <>
+      <Header>글 수정하기</Header>
       <Container>
-        <Header>글 수정하기</Header>
         <Form>
           <InputWrapper>
             <Title
