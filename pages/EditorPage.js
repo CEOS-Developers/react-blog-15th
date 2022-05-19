@@ -29,6 +29,7 @@ function EditorPage() {
 
     if (inputText) {
       const post = {
+        postNum: postList.length+1,
         title: inputText.title,
         content: inputText.content,
         date: getInputDate(),
@@ -36,8 +37,8 @@ function EditorPage() {
       };
 
       setPostList((postList) => [...postList, post]);
-      console.log(postList);
       reset();
+      
     } else {
       alert('입력하세요!');
     }

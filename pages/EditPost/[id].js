@@ -19,7 +19,7 @@ function EditPost() {
   const router = useRouter();
   const { id } = router.query;
   const numbering = Number(id);
-  const [postObj] = postList.filter((post) => post.id === numbering);
+  const [postObj] = postList.filter((post) => post.postNum === numbering);
 
   const savedTitle = postObj.title;
   const savedContent = postObj.content;
@@ -29,16 +29,16 @@ function EditPost() {
 
     if (inputText) {
       const post = {
+        postNum:numbering,
         title: inputText.title,
         content: inputText.content,
         date: postObj.date,
         id: postObj.id,
       };
 
-      setPostList((postList) => [
-        ...postList.filter((item) => item.id !== postObj.id),
-        post,
-      ]);
+      const newArray = [...postList]; 
+      newArray.splice(numbering-1,1,post)     
+      setPostList(newArray);
       reset();
     } else {
       alert('입력하세요!');

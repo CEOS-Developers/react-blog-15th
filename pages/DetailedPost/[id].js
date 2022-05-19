@@ -19,12 +19,12 @@ function DetailContainer() {
   const numbering = Number(id);
   const currentPostList = useRecoilValue(PostListState);
 
-  const [postObj] = currentPostList.filter((post) => post.id === numbering);
+  const [postObj] = currentPostList.filter((post) => post.postNum === numbering);
 
   const setPostList = useSetRecoilState(PostListState);
 
   const onHandleDelete = () => {
-    setPostList((item) => item.filter((item) => item.id !== postObj.id));
+    setPostList((item) => item.filter((item) => item.postNum !== postObj.postNum));
     navigateHome();
   };
   return (
