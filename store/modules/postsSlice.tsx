@@ -11,7 +11,6 @@ const postsSlice = createSlice({
   initialState,
   reducers: {
     addPost: (state, action: PayloadAction<IPost>) => {
-      console.log('addPost');
       const nextPostId = (
         Math.max(...state.map((post) => parseInt(post.postId))) + 1
       ).toString();
@@ -24,14 +23,12 @@ const postsSlice = createSlice({
       return state.concat(newPost);
     },
     updatePost: (state, action: PayloadAction<IPost>) => {
-      console.log('updatePost');
       const temp = state.filter(
         (post) => post.postId !== action.payload.postId
       );
       return temp.concat(action.payload);
     },
     removePost: (state, action: PayloadAction<string>) => {
-      console.log('removePost');
       return state.filter((post) => post.postId !== action.payload);
     },
   },
