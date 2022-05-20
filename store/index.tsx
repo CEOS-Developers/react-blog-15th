@@ -5,7 +5,7 @@ import posts from './modules/postsSlice';
 
 export const reducer = (state, action) => {
   if (action.type === HYDRATE) {
-    return { ...state, ...action.payload };
+    return { ...action.payload, ...state };
   }
   return combineReducers({ posts })(state, action);
 };
