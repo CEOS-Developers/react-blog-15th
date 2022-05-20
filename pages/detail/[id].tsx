@@ -10,7 +10,7 @@ import { deletePost } from "../../store/modules/post";
 import { wrapper, getAllPostIds } from "../../store";
 import { IPost } from "../../store/types";
 
-import PostLayout from "../../components/Layout";
+import Layout from "../../components/Layout";
 
 const Detail = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const router = useRouter();
@@ -22,7 +22,8 @@ const Detail = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
     date: "",
   });
 
-  posts = posts ? useAppSelector((state) => state.post.posts) : posts;
+  const storePosts = useAppSelector((state) => state.post.posts);
+  posts = posts ? storePosts : posts;
 
   const handleDelete = (): void => {
     dispatch(deletePost(String(router.query.id)));
@@ -37,7 +38,7 @@ const Detail = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
   }, []);
 
   return (
-    <PostLayout>
+    <Layout>
       <Title>{post.title}</Title>
       <Date>{post.date}</Date>
       <Content>{post.content}</Content>
@@ -50,7 +51,7 @@ const Detail = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
         </Link>
         <Button onClick={handleDelete}>삭제</Button>
       </ButtonsBox>
-    </PostLayout>
+    </Layout>
   );
 };
 

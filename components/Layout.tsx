@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-const PostLayout = ({ children }: { children: React.ReactNode }) => {
+const Layout = ({ children }: { children: React.ReactNode }) => {
   return <Wrapper>{children}</Wrapper>;
 };
 
-export default PostLayout;
+export default Layout;
 
 const Wrapper = styled.div`
   height: 40rem;
