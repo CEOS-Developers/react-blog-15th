@@ -10,7 +10,7 @@ import { store } from 'store';
 
 function Detail({ post, id }: InferGetStaticPropsType<typeof getStaticProps>) {
   const router = useRouter();
-  const date = dayjs(post.date).format('YYYY.MM.DD');
+  const date = dayjs(post.date).format('YYYY.MM.DD HH:mm');
   const dispatch = useAppDispatch();
 
   const onDelete = () => {
@@ -86,6 +86,7 @@ const Content = styled.div`
   border-bottom: 1px solid black;
   white-space: pre-wrap;
   word-break: break-all;
+  line-height: 1.5;
 `;
 
 const Info = styled.div`

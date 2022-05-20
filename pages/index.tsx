@@ -13,7 +13,7 @@ function Index() {
   const posts = useAppSelector((state) => state.posts);
   return (
     <Wrapper>
-      <h1>전체 글 보기</h1>
+      <h1>전체 글 보기 ({posts.length})</h1>
       <PostBox>
         {posts.map((post) => (
           <Link
