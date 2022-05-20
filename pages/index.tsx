@@ -13,7 +13,12 @@ function Index() {
   const posts = useAppSelector((state) => state.posts);
   return (
     <Wrapper>
-      <h1>전체 글 보기 ({posts.length})</h1>
+      <HeaderWrapper>
+        <h1>전체 글 보기 ({posts.length})</h1>
+        <Link href={'/editor'}>
+          <button>새 글 작성</button>
+        </Link>
+      </HeaderWrapper>
       <PostBox>
         {posts.map((post) => (
           <Link
@@ -42,6 +47,24 @@ const Wrapper = styled.div`
     font-size: 2rem;
     font-weight: 700;
     padding: 50px 0;
+  }
+`;
+
+const HeaderWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  button {
+    padding: 0.5rem;
+
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: ${({ theme }) => theme.color.blue};
+
+    border: solid 2px ${({ theme }) => theme.color.blue};
+    border-radius: 10px;
   }
 `;
 
