@@ -6,6 +6,5 @@ export default function useRouting(){
     const { id } = router.query;
     const numbering = Number(id);
     
-
     return(numbering);
 }
