@@ -2,17 +2,15 @@ import styled from "styled-components";
 import React, { ChangeEvent, useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { GetServerSideProps, GetStaticProps } from "next";
-import { InferGetServerSidePropsType, InferGetStaticPropsType } from "next";
+import { InferGetStaticPropsType, GetStaticProps } from "next";
 
 import { useAppDispatch } from "../../hooks/useAppDispatch";
-import { addPost, updatePost } from "../../store/modules/post";
-import { wrapper } from "../../store";
-import { IPost } from "../../store/types";
 import { useAppSelector } from "../../hooks/useAppSelector";
-import { getAllPostIds } from "../../store";
+import { addPost, updatePost } from "../../store/modules/post";
+import { getAllPostIds, wrapper } from "../../store";
+import { IPost } from "../../store/types";
 
-import PostLayout from "../../components/PostLayout";
+import Layout from "../../components/Layout";
 
 const Edit = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const router = useRouter();
@@ -64,7 +62,7 @@ const Edit = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
   }, []);
 
   return (
-    <PostLayout>
+    <Layout>
       <TitleInput
         name="title"
         placeholder="제목을 입력하세요"
@@ -83,7 +81,7 @@ const Edit = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
           <Button>취소</Button>
         </Link>
       </Buttons>
-    </PostLayout>
+    </Layout>
   );
 };
 
@@ -132,6 +130,24 @@ const ContentInput = styled.textarea`
 
   font-size: 1rem;
   line-height: 2rem;
+
+  &::-webkit-scrollbar {
+    width: 0.6rem;
+  }
+
+  & ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.08);
+    visibility: hidden;
+  }
+
+  &:hover::-webkit-scrollbar-thumb {
+    visibility: visible;
+    border-radius: 1rem;
+  }
 `;
 const Buttons = styled.section`
   width: 100%;

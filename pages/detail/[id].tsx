@@ -2,16 +2,15 @@ import styled from "styled-components";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { GetServerSideProps, GetStaticProps } from "next";
-import { InferGetServerSidePropsType, InferGetStaticPropsType } from "next";
+import { InferGetStaticPropsType, GetStaticProps } from "next";
 
 import { useAppDispatch } from "../../hooks/useAppDispatch";
+import { useAppSelector } from "../../hooks/useAppSelector";
 import { deletePost } from "../../store/modules/post";
 import { wrapper, getAllPostIds } from "../../store";
 import { IPost } from "../../store/types";
-import { useAppSelector } from "../../hooks/useAppSelector";
 
-import PostLayout from "../../components/PostLayout";
+import PostLayout from "../../components/Layout";
 
 const Detail = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const router = useRouter();
