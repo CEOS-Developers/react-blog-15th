@@ -16,7 +16,11 @@ function Index() {
       <h1>전체 글 보기</h1>
       <PostBox>
         {posts.map((post) => (
-          <Link key={post.postId} href={`/detail/${post.postId}`}>
+          <Link
+            key={post.postId}
+            href={`/detail/[id]`}
+            as={`/detail/${post.postId}`}
+          >
             <a>
               <PostItem data={post} />
             </a>

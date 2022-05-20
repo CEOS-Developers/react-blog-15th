@@ -10,7 +10,7 @@ export const reducer = (state, action) => {
   return combineReducers({ posts })(state, action);
 };
 
-const store = configureStore({
+export const store = configureStore({
   reducer,
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 });
