@@ -88,4 +88,4 @@ function EditorContainer() {
   );
 }
 
-export default React.memo(EditorContainer);
+export default EditorContainer;
