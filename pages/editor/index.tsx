@@ -42,7 +42,8 @@ function Editor() {
     };
     addPostTrigger(postToAdd);
     const nextPostId = posts.length + 1;
-    router.push(`/detail/${nextPostId}`);
+    // router.push(`/detail/${nextPostId}`);
+    router.push(`/`);
   }
 
   return (
