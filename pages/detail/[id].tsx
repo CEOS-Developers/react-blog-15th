@@ -6,6 +6,7 @@ import dayjs from 'dayjs';
 import { useAppDispatch } from 'hooks/useAppDispatch';
 import { removePost } from 'store/modules/postsSlice';
 import Link from 'next/link';
+import { store } from 'store';
 
 function Detail({ post, id }: InferGetStaticPropsType<typeof getStaticProps>) {
   const router = useRouter();
@@ -53,12 +54,10 @@ export const getStaticProps: GetStaticProps = wrapper.getStaticProps(
 );
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  const posts = store.getState().posts;
+  const paths = posts.map((post) => ({ params: { id: post.postId } }));
   return {
-    paths: [
-      { params: { id: '1' } },
-      { params: { id: '2' } },
-      { params: { id: '3' } },
-    ],
+    paths,
     fallback: true,
   };
 };
