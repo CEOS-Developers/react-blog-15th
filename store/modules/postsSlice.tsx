@@ -23,10 +23,20 @@ const postsSlice = createSlice({
       return state.concat(newPost);
     },
     updatePost: (state, action: PayloadAction<IPost>) => {
-      const temp = state.filter(
-        (post) => post.postId !== action.payload.postId
+      return state.map((post) =>
+        post.postId === action.payload.postId
+          ? {
+              ...post,
+              titile: action.payload.title,
+              content: action.payload.content,
+            }
+          : post
       );
-      return temp.concat(action.payload);
+
+      // const temp = state.filter(
+      //   (post) => post.postId !== action.payload.postId
+      // );
+      // return temp.concat(action.payload);
     },
     removePost: (state, action: PayloadAction<string>) => {
       return state.filter((post) => post.postId !== action.payload);
