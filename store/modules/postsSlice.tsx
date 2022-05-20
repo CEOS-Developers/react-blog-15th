@@ -27,16 +27,11 @@ const postsSlice = createSlice({
         post.postId === action.payload.postId
           ? {
               ...post,
-              titile: action.payload.title,
+              title: action.payload.title,
               content: action.payload.content,
             }
           : post
       );
-
-      // const temp = state.filter(
-      //   (post) => post.postId !== action.payload.postId
-      // );
-      // return temp.concat(action.payload);
     },
     removePost: (state, action: PayloadAction<string>) => {
       return state.filter((post) => post.postId !== action.payload);
