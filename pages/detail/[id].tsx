@@ -2,14 +2,38 @@ import styled from 'styled-components';
 import { useRouter } from 'next/router';
 import { GetStaticProps, GetStaticPaths, InferGetStaticPropsType } from 'next';
 import { wrapper } from 'store';
+import dayjs from 'dayjs';
+import { useAppDispatch } from 'hooks/useAppDispatch';
+import { removePost } from 'store/modules/postsSlice';
+import Link from 'next/link';
 
-function Detail({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
+function Detail({ post, id }: InferGetStaticPropsType<typeof getStaticProps>) {
   const router = useRouter();
-  console.log(router);
-  console.log(posts);
+  const date = dayjs(post.date).format('YYYY.MM.DD');
+  const dispatch = useAppDispatch();
+
+  const onDelete = () => {
+    confirm('정말 삭제하시겠습니까?')
+      ? (dispatch(removePost(id)), router.replace('/'))
+      : null;
+  };
+
   return (
     <Wrapper>
-      <h1>Detail Page {router.query.id}</h1>
+      <h1>{post.title}</h1>
+      <Info>
+        <Date>{date}</Date>
+        <div>
+          <Link href={`/editor/[id]`} as={`/editor/${post.postId}`}>
+            <button>수정</button>
+          </Link>
+          <button onClick={onDelete}>삭제</button>
+        </div>
+      </Info>
+      <Content>{post.content}</Content>
+      <Link href={`/`}>
+        <button style={{ marginLeft: 'auto' }}>전체 글 보기</button>
+      </Link>
     </Wrapper>
   );
 }
@@ -18,10 +42,12 @@ export default Detail;
 
 // https://github.com/vercel/next.js/blob/canary/examples/with-redux-wrapper/pages/index.js
 export const getStaticProps: GetStaticProps = wrapper.getStaticProps(
-  (store) => async () => {
+  (store) => async (context) => {
+    const id = context.params.id;
     const posts = store.getState().posts;
+    const [post] = posts.filter((post) => post.postId === id);
     return {
-      props: { posts },
+      props: { post, id },
     };
   }
 );
@@ -47,4 +73,29 @@ const Wrapper = styled.div`
     font-weight: 700;
     padding: 50px 0;
   }
+
+  button {
+    margin-left: 10px;
+    font-size: 1rem;
+  }
+`;
+
+const Content = styled.div`
+  margin: 30px 0px;
+  padding: 30px 0px 100px 0px;
+  border-top: 4px solid black;
+  border-bottom: 1px solid black;
+  white-space: pre-wrap;
+  word-break: break-all;
+`;
+
+const Info = styled.div`
+  display: flex;
+  justify-content: space-between;
+
+  margin: 10px 0;
+`;
+
+const Date = styled.div`
+  color: ${({ theme }) => theme.color.darkGray};
 `;
