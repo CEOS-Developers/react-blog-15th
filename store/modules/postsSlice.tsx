@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IPost, IPosts } from 'shared/interfaces';
-// import { HYDRATE } from "next-redux-wrapper";
 import { posts as postsData } from '../../assets/json/posts.json';
 
 export type TPostsState = IPosts;
@@ -13,7 +12,16 @@ const postsSlice = createSlice({
   reducers: {
     addPost: (state, action: PayloadAction<IPost>) => {
       console.log('addPost');
-      return state.concat(action.payload);
+      const nextPostId = (
+        Math.max(...state.map((post) => parseInt(post.postId))) + 1
+      ).toString();
+      const newPost: IPost = {
+        postId: nextPostId,
+        title: action.payload.title,
+        content: action.payload.content,
+        date: action.payload.date,
+      };
+      return state.concat(newPost);
     },
     updatePost: (state, action: PayloadAction<IPost>) => {
       console.log('updatePost');
@@ -27,14 +35,6 @@ const postsSlice = createSlice({
       return state.filter((post) => post.postId !== action.payload);
     },
   },
-  // extraReducers: {
-  //   [HYDRATE]: (state, action) => {
-  //     return {
-  //       ...action.payload,
-  //       ...state,
-  //     };
-  //   },
-  // },
 });
 
 export const { addPost, updatePost, removePost } = postsSlice.actions;

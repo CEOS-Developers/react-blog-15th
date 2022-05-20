@@ -1,28 +1,26 @@
 import React, { useCallback, useState } from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
-import { useSelector } from 'react-redux';
-import { RootState } from '../store';
-import { useDispatch } from 'react-redux';
 import {
   addPost,
   updatePost,
   removePost,
-} from '../../features/posts/postsSlice';
+} from '../../store/modules/postsSlice';
 import { IPost } from 'shared/interfaces';
+import { useAppSelector } from 'hooks/useAppSelector';
+import { useAppDispatch } from 'hooks/useAppDispatch';
 
 // 포스트를 수정할 때에는 기존에 작성된 내용을 에디터 페이지로 불러옵니다.
 // https://react.vlpt.us/basic/09-multiple-inputs.html
 // https://www.codingfactory.net/10755
 
 function Editor() {
-  const posts = useSelector((state: RootState) => state.posts);
-  console.log(posts);
+  // >>>
+  const posts = useAppSelector((state) => state.posts);
   function printPosts() {
     console.log(posts);
   }
-
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const samplePost = {
     postId: '3',
     title: 'sample title',
@@ -41,10 +39,10 @@ function Editor() {
     (postIdToRemove: string) => dispatch(removePost(postIdToRemove)),
     [dispatch]
   );
+  // <<<
 
   const [inputs, setInputs] = useState({ title: '', content: '' });
   const { title, content } = inputs;
-
   function handleInputChange(
     e:
       | React.ChangeEvent<HTMLInputElement>
@@ -61,12 +59,14 @@ function Editor() {
 
   return (
     <Block>
+      {/* >>> */}
       <button onClick={() => addPostTrigger(samplePost)}>add</button>
       <button onClick={() => updatePostTrigger(samplePost)}>update</button>
       <button onClick={() => removePostTrigger(samplePost.postId)}>
         remove
       </button>
       <button onClick={() => printPosts()}>print</button>
+      {/* <<< */}
       <Title
         name="title"
         placeholder="제목을 입력하세요"
@@ -92,23 +92,6 @@ function Editor() {
 }
 
 export default Editor;
-
-// export const getStaticProps: GetStaticProps = wrapper.getStaticProps(
-//   (store) => () => {
-//     const posts = store.getState().post.posts;
-//     return {
-//       props: { posts },
-//     };
-//   }
-// );
-
-// export async function getStaticPaths() {
-//   const paths = getAllPostIds();
-//   return {
-//     paths,
-//     fallback: true,
-//   };
-// }
 
 const Block = styled.div`
   width: 100%;
