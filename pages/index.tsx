@@ -26,7 +26,7 @@ function Index() {
     </Wrapper>
   );
 }
-
+// https://github.com/vercel/next.js/blob/canary/examples/with-redux-wrapper/pages/index.js
 export default Index;
 
 const Wrapper = styled.div`
