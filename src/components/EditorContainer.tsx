@@ -30,7 +30,7 @@ function EditorContainer() {
   const handleNewPost = (e: React.SyntheticEvent) => {
     e.preventDefault();
 
-    if (inputText.title != '' || inputText.content != '') {
+    if (inputText.title != '' && inputText.content != '') {
       const post = {
         postNum: numbering ? numbering : postList.length + 1,
         title: inputText.title,
@@ -42,12 +42,11 @@ function EditorContainer() {
       const newArray = [...postList];
       newArray.splice(numbering - 1, 1, post); //포스트 수정
       setPostList(numbering ? newArray : (postList) => [...postList, post]); //포스트 수정,포스트 등록
-
+      navigateHome();
       reset();
     } else {
       alert('입력하세요!');
     }
-    navigateHome();
   };
 
   return (
