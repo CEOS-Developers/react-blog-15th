@@ -30,7 +30,18 @@ function EditorContainer() {
   const handleNewPost = (e: React.SyntheticEvent) => {
     e.preventDefault();
 
-    if (inputText.title != '' && inputText.content != '') {
+    if (
+      numbering
+        ? inputText.title != '' || inputText.content != ''
+        : inputText.title != '' && inputText.content != ''
+    ) {
+      if (numbering && inputText.title == '') {
+        inputText.title = savedTitle;
+      }
+      if (numbering && inputText.content == '') {
+        inputText.content = savedContent;
+      }
+
       const post = {
         postNum: numbering ? numbering : postList.length + 1,
         title: inputText.title,
