@@ -4,8 +4,8 @@ import Head from 'next/head';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from '../styles/global-style';
 import { theme } from '../styles/theme';
-import { store } from '../store';
 import { Provider } from 'react-redux';
+import { wrapper } from 'store';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -15,15 +15,13 @@ function MyApp({ Component, pageProps }: AppProps) {
         <title>next-blog</title>
       </Head>
       <GlobalStyle />
-      <Provider store={store}>
-        <ThemeProvider theme={theme}>
-          <AppLayout>
-            <Component {...pageProps} />
-          </AppLayout>
-        </ThemeProvider>
-      </Provider>
+      <ThemeProvider theme={theme}>
+        <AppLayout>
+          <Component {...pageProps} />
+        </AppLayout>
+      </ThemeProvider>
     </>
   );
 }
 
-export default MyApp;
+export default wrapper.withRedux(MyApp);
