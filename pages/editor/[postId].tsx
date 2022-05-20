@@ -49,7 +49,8 @@ function Editor() {
       date: 'dummy',
     };
     updatePostTrigger(postToAdd);
-    router.push(`/detail/${router.query.postId}`);
+    // router.push(`/detail/${router.query.postId}`);
+    router.push(`/`);
   }
 
   return (
