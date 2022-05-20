@@ -45,11 +45,14 @@ export const BlogStyle = createGlobalStyle`
   }
   html {
     font-size : 16px;
+    height: 100%;
   }
   body {
     background: linear-gradient(330deg, #2ebfff63, rgba(232,166,255,0.91));
-  }
-  
-  height: 100vh;
-  width: 100vw;
-    `;
+    height: 100vh;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+}
+`;
