@@ -1,33 +1,24 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
-import { updatePost } from '../../store/modules/postsSlice';
+import { addPost } from '../../store/modules/postsSlice';
 import { IPost } from 'shared/interfaces';
 import { useAppSelector } from 'hooks/useAppSelector';
 import { useAppDispatch } from 'hooks/useAppDispatch';
 import { useRouter } from 'next/router';
 import { RootState } from 'store';
+import dayjs from 'dayjs';
 
 function Editor() {
   const router = useRouter();
   const posts = useAppSelector((state: RootState) => state.posts);
   const dispatch = useAppDispatch();
-  const updatePostTrigger = useCallback(
-    (postToUpdate: IPost) => dispatch(updatePost(postToUpdate)),
+  const addPostTrigger = useCallback(
+    (postToAdd: IPost) => dispatch(addPost(postToAdd)),
     [dispatch]
   );
   const [inputs, setInputs] = useState({ title: '', content: '' });
   const { title, content } = inputs;
-
-  useEffect(() => {
-    const i = posts.findIndex(
-      (post: IPost) => post.postId === router.query.postId
-    );
-    if (i !== -1) {
-      const prevPost = posts[i];
-      setInputs({ title: prevPost.title, content: prevPost.content });
-    }
-  }, [router.query.postId]);
 
   function handleInputChange(
     e:
@@ -42,14 +33,16 @@ function Editor() {
   }
 
   function handleSubmitBtnClick() {
+    const now = dayjs();
     const postToAdd = {
-      postId: router.query.postId as string,
+      postId: 'dummy',
       title: title,
       content: content,
-      date: 'dummy',
+      date: now.format(),
     };
-    updatePostTrigger(postToAdd);
-    router.push(`/detail/${router.query.postId}`);
+    addPostTrigger(postToAdd);
+    const nextPostId = posts.length + 1;
+    router.push(`/detail/${nextPostId}`);
   }
 
   return (
