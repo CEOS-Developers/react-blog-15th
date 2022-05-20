@@ -10,7 +10,7 @@ import { store } from 'store';
 
 function Detail({ post, id }: InferGetStaticPropsType<typeof getStaticProps>) {
   const router = useRouter();
-  const date = dayjs(post.date).format('YYYY.MM.DD HH:mm');
+  const date = post ? dayjs(post.date).format('YYYY.MM.DD HH:mm') : null;
   const dispatch = useAppDispatch();
 
   const onDelete = () => {
@@ -21,17 +21,21 @@ function Detail({ post, id }: InferGetStaticPropsType<typeof getStaticProps>) {
 
   return (
     <Wrapper>
-      <h1>{post.title}</h1>
-      <Info>
-        <Date>{date}</Date>
-        <div>
-          <Link href={`/editor/[id]`} as={`/editor/${post.postId}`}>
-            <button>수정</button>
-          </Link>
-          <button onClick={onDelete}>삭제</button>
-        </div>
-      </Info>
-      <Content>{post.content}</Content>
+      {date ? (
+        <>
+          <h1>{post.title}</h1>
+          <Info>
+            <Date>{date}</Date>
+            <div>
+              <Link href={`/editor/[id]`} as={`/editor/${post.postId}`}>
+                <button>수정</button>
+              </Link>
+              <button onClick={onDelete}>삭제</button>
+            </div>
+          </Info>
+          <Content>{post.content}</Content>
+        </>
+      ) : null}
       <Link href={`/`}>
         <button style={{ marginLeft: 'auto' }}>전체 글 보기</button>
       </Link>
