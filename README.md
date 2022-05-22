@@ -1,50 +1,102 @@
-# 6주차 미션: React-Blog 📄
+## Next.js를 사용하는 이유
 
-# 서론
+Next.js는 React 기반의 프레임워크로 SEO를 위한 Server-Side Rendering을 제공합니다.
 
-안녕하세요 🙌🏻 15기 프론트 파트장 **김주현**입니다.
+![images-syoung125-post-2705ccb4-0834-4b8d-925b-f47521eeba38-image](https://user-images.githubusercontent.com/76840145/169432079-8764d32a-3366-43fc-a110-fc900997d86d.png)
 
-이번주에는 새 프로젝트인 **블로그** 만들기를 진행합니다. 이번 과제에서는 Next.js를 사용해 보며 SSR을 이해하고, 각 팀별로 미리 호흡을 맞춰 보는 좋은 기회가 될 것 같습니다.
+React의 경우 Client-Side Rendering을 사용하는데요, 이러한 방법은 위와 같은 단점을 가질 수 있습니다. 웹사이트를 요청했을 때 빈 html을 가져오고 script를 로딩하게 되어 로딩 시 첫 화면에서 빈 화면이 나오게 되고 SEO에도 적합하지 않습니다. 
 
-# 미션
+Next.js는 React에서 제공하는 Client-Side Rendering의 단점을 해결할 수 있습니다.
 
-## 미션 목표
+![images-syoung125-post-d9d59bb4-73fb-4f4f-a6b5-22ceaa06141a-image](https://user-images.githubusercontent.com/76840145/169432119-b0aa2f4b-93f9-4386-ad24-720f95e350cf.png)
 
-- Next.js 사용법을 공부해 봅니다.
-- 성능 최적화를 위한 방법을 적용해 봅니다.
-- Git을 이용한 협업 방식에 익숙해집니다.
+Next.js는 Server-Side Rendering을 제공하기 때문에 pre-rendering으로 데이터가 렌더링된 페이지를 가져올 수 있어 첫 로딩시 빈 화면을 제공하지 않고 검색 엔진에 잘 노출될 수 있습니다. 
 
-## 기한
+또한 Next.js는 파일 기반 라우팅 시스템을 제공합니다. 
 
-- 2022년 5월 20일 금요일 **(기한 엄수!)**
+<img width="164" alt="%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202022-05-20%2009 55 53" src="https://user-images.githubusercontent.com/76840145/169432158-c92529fe-bbc2-44ef-9e5a-7b240f9a2517.png">
 
-## 필수 요건
+Next.js 프로젝트 생성시 pages 폴더가 자동생성됩니다. 해당 폴더에 원하는 라우팅 페이지를 넣어주면 파일 이름에 해당하는 route를 가지게 되고 간단하게 routing을 사용할 수 있습니다. pages 폴더 내에서 폴더를 선언하게 되면 ```/폴더명/폴더명/.../파일명```의 방식으로 route를 가지게 됩니다. 
 
-- 기본적인 CRUD를 구현합니다.
-- 메인 페이지, 포스트 상세 페이지, 에디터 페이지로 구성합니다.
-- 메인 페이지에서는 각 포스트들의 제목과 작성 날짜를 리스트 형태로 보여줍니다.
-- 포스트 상세 페이지에서는 제목, 작성일, 본문의 내용을 표시합니다.
-- 포스트를 수정할 때에는 기존에 작성된 내용을 에디터 페이지로 불러옵니다.
-- 포스트 삭제 기능을 구현합니다.
-- 성능 최적화를 위한 방법을 적용해 봅니다.
+또한 route를 동적으로 구현하고 싶을때는 []를 사용해 상세페이지의 변수명을 사용할 수 있습니다. 저희 프로젝트를 예시로 보시면 ```pages/detail/[id]```, ```pages/edit/[id]```를 사용해 동적인 route를 사용하고 있습니다.
 
-## 선택 사항
+<img width="545" alt="%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202022-05-20%2010 04 45" src="https://user-images.githubusercontent.com/76840145/169432180-aa43eedd-504e-4e8e-baa4-2e24689b6203.png">
 
-- 웹 폰트를 사용합니다.
-- 카테고리 기능을 구현합니다.
-- 그 외에 자유롭게 기능을 추가해 주세요!
+따라서 다음과 같이 웹페이지에서 ```detail/[고유id]```, ```edit/[고유id]```를 경로로 사용할 수 있습니다. 
 
-## Key Question
+결국 Next.js는 react-router를 사용해 코드 기반 라우팅을 제공했던 React와 달리 직관적인 방식으로 파일 기반 라우팅을 제공해 편리함을 제공합니다.
 
-- Next.js를 사용하는 이유
-- SEO란?
-- 성능 최적화를 위해 사용한 방법
-- 전반적인 협업 과정
+참고 [https://velog.io/@syoung125/Next.js-기본-개념-1-Next.js-란-Next.js를-왜-사용할까-Next.js의-장점은](https://velog.io/@syoung125/Next.js-%EA%B8%B0%EB%B3%B8-%EA%B0%9C%EB%85%90-1-Next.js-%EB%9E%80-Next.js%EB%A5%BC-%EC%99%9C-%EC%82%AC%EC%9A%A9%ED%95%A0%EA%B9%8C-Next.js%EC%9D%98-%EC%9E%A5%EC%A0%90%EC%9D%80)
 
-# 링크 및 참고자료
+<br/>
 
-- [Next.js Docs](https://nextjs.org/docs/getting-started)
-- [React 개발이 이렇게 쉬웠나? (Feat. Next.js)](https://geonlee.tistory.com/229)
-- [useCallback과 React.Memo를 이용한 렌더링 최적화](https://velog.io/@yejinh/useCallback%EA%B3%BC-React.Memo%EC%9D%84-%ED%86%B5%ED%95%9C-%EB%A0%8C%EB%8D%94%EB%A7%81-%EC%B5%9C%EC%A0%81%ED%99%94)
-- [성능 최적화](https://ui.toast.com/fe-guide/ko_PERFORMANCE)
-- [Git 협업 가이드](https://velog.io/@jinuku/Git-%ED%98%91%EC%97%85-%EA%B0%80%EC%9D%B4%EB%93%9C)
+## SEO란?
+
+Search Engine Optimization의 약자인 SEO는 구글 (혹은 다른 검색엔진)의 검색 결과 상 사이트가 상단에 노출되도록 하는 전략을 말합니다. 현재 구글은 Google Quality Guideline (https://developers.google.com/search/docs/advanced/guidelines/overview) 을 통해 검색엔진 상단에 노출시키 위한 일련의 가이드라인을 제공하고 있습니다. 위의 가이드라인을 위반하는 사이트는 구글에 의해 패널티를 받을 수 있습니다. 구글의 랭킹 알고리즘은 매년 주요 업데이트를 진행하며 이러한 업데이트를 추적하는 것도 중요한 개발자의 작업입니다.
+
+SEO는 개발자만의 작업이 아닙니다. 웹페이지가 제공하는 정보의 질과 신뢰성이 가장 중요합니다. 개발자는 사용자와 크롤러에 의한 페이지 접근성을 높이는 작업을 진행할 수 있습니다. 올바른 html 태그의 사용, 데이터의 구조화, 모바일 친화적인 페이지와 같은 작업들이 존재합니다. 일례로 구글은 <title> 태그 안의 내용을 검색결과의 제목으로 사용합니다. 따라서 <title> 태그를 잘 사용하고 해당 태그 내 적절한 내용을 적어넣는 것은 웹페이지의 노출에 중요할 수 있습니다.
+
+	-	<title>과 <meta> 태그의 사용
+	-	<h1>, <h2>와 같은 헤더 태그 사용, <img>에 alt 속성 부여
+	-	HTTPS 프로토콜의 사용
+	-	웹 접근성 강화
+	-	URL이 의미를 가지도록 구조화 (example.com/RunningShoes/Womens)
+	-	<href> 연결 (외부 사이트 연결시 rel=“nofollow”를 통해 구분, 자기 사이트 최대한 연결)
+	-	콘텐츠가 중복되지 않도록 주의 (같은 콘텐츠가 서로 경쟁하지 않도록 구분)
+	-	로컬라이제이션 (meta 태그를 통해 지원 언어 명시)
+
+구글은 SEO를 위해 Google Search Console (https://search.google.com/search-console/about)을 제공하고 있습니다. 혹은 크롤링을 수행해 문제점을 보여주는 상업적 툴을 이용해 SEO를 시도할 수 있습니다. 
+
+기본적인 검색엔진은 서버에 의해 생성된 html 페이지를 분석합니다. 지난 시간 동안 크롤러는 다량의 페이지를 빠르게 탐색해야 하므로 자바스크립트를 지원하지 않았습니다. 만일 어떤 페이지가 CSR을 통해 렌더링한다면 크롤러는 그냥 지나칩니다. 따라서 이커머스 사이트의 경우 서버에 인덱싱용 정적 페이지를 생성하고 로드과 완료되면 CSR이 개입해 사용자 경험을 강화해왔습니다. 이러한 개념을 토대로 발전한 것이 SSR입니다.
+
+다만, 현재는 CSR로 생성된 페이지를 크롤러가 지원하기 시작했습니다. 따라서, 모던 웹의 발전에 따라 SSR의 중요성은 점차 감소할 수도 있습니다.
+
+검색엔진 최적화 만큼 중요한 것은 웹페이지 속도 개선입니다. 이는 Google PageSpeed Insights를 통해 간편하게 조회할 수 있습니다. Mobify는 100ms의 홈페이지 속도 차이 개선으로 세션 기반 전환율의 1.11% 증가 및 연간 $380,000의 수익 증가를 이끌어 냈습니다. 홈페이지 속도를 측정하는 대표적인 지표는 다음과 같습니다. (1) FID: First Input Display (2) FCP: First Contentful Paint (3) TTI: Time to Interactive. 자세한 내용은 다음의 링크를 통해 찾을 수 있습니다. (https://web.dev/i18n/ko/vitals/) 웹페이지의 속도는 제한된 대역폭 내에서 얼마나 많은 자원을 불러오는지에 영향을 받습니다. 여기에는 폰트, 서드파티 스트립트, 이미지 등 자원이 해당됩니다. 
+
+출처 
+https://medium.com/welldone-software/seo-for-developers-a-quick-overview-5b5b7ce34679
+https://business.adobe.com/blog/basics/server-side-vs-client-side-rendering-and-changing-seo-practices
+	
+<br/>
+	
+## 성능 최적화를 위해 사용한 방법
+	
+<br>
+
+/* 20220522 추가된 부분 */
+	
+Next.js는 배포하는 사이트의 모든 페이지를 미리 렌더링합니다. 따라서 각 페이지의 HTML 파일은 미리 생성되어 SEO에 의한 노출을 강화합니다. HTML 파일은 요청시 최소한의 자바스크립트 코드와 함께 배포됩니다. 따라서 페이지가 웹브라우저에 의해 로드되면 자바스크립트에 의해 상호작용하게 변하는데 이 과정을 'hydration'이라고 부릅니다. 저희가 사용한 redux-wrapper는 next.js를 통해 생성된 각 페이지가 로드될 때 이 hydration 이벤트를 감지하고 자동으로 전역 상태로 미리 정의된 액션을 배포합니다. 액션의 payload는 SSR/SSG 시점의 상태값 입니다. 이후 redux-wrapper는 개발자가 액션 핸들러에 정의한 대로 서버 State와 클라이언트 State의 차이 및 새로운 부분을 비교해 클라이언트 state를 업데이트합니다.
+	
+이 과정은 state reconciliation이라고 합니다. 공식 문서에서는 일정한 로직을 통해 비교한 뒤 차이점을 업데이트 하는 것 보다, 아예 클라이언트 단에서 서버 state와 클라이언트 state를 별도로 관리할 것을 추천하고 있습니다. 만일 서버와 클라이언트가 동기적으로 유사한 state를 가지기를 원한다면 쿠키를 이용할 것을 권장합니다.
+
+Next.js가 지원하는 렌더링 방법은 2가지가 있습니다. SSG(Static Site Generation)의 경우 HTML을 빌드 타임에 생성해 각 요청이 발생시 재사용합니다. 반면 SSR(Server-side Rendering)의 경우 HTML을 각 요청이 발생할 때 생성합니다. Next.js는 두 방법을 페이지 별로 다르게 사용하는 하이브리드 생성을 지원합니다. SSG는 한번 빌드되고 이후 CDN을 통해 계속 배포되기 때문에 가장 빠른 렌더링 방법입니다. 다만, SSG는 개인화된 사용자 정보를 포함할 수 없고 사이트의 규모가 커지면 오랜 빌드 타임이 필요할 수 있습니다. 또한, getStaticPath를 통해 동적 경로가 존재하는 경우 이를 미리 선언해주어야 합니다. 추가로 개발 환경에서 SSG는 StaticProps를 매 요청마다 업데이트 하지만 배포 환경에서는 빌드 타임에만 요청한다는 점도 주의해야 합니다.
+	
+![image](https://user-images.githubusercontent.com/75231844/169674829-6872169f-603c-467a-8875-3bbbc75808d2.png)
+![image](https://user-images.githubusercontent.com/75231844/169674831-e8913e1e-db75-49bc-94de-d37231d8e62f.png)
+
+
+SSG와 달리 SSR(Server Side Rendering)은 ServerSideProps로 요청이 발생할 시 매번 새로운 context를 제공합니다. 따라서 SSG 보다는 로드 속도가 느릴 수 있습니다. 대시보드나 로그인 후 페이지 등 개인화된 사용자 정보를 포함하는 페이지를 렌더링할 때 유리합니다. 추가로 Vercel에서는 서버를 통해 캐시 데이터의 형태로 클라이언트 state 를 관리하는 SWR도 소개하고 있습니다. 이는 서버에서 클라이언트 state를 관리하고 만일 변경이 발생하면 서버를 통해 사용자 페이지를 특정 시점마다 업데이트 하는 방식입니다. 이러한 state는 커스텀 훅을 통해 전역적으로 배포될 수도 있습니다.
+	
+/* 추가사항 끝 */
+	
+<br/>
+
+Next.js는 SSR과 SSG를 지원하는 리엑트 배포 프레임워크입니다. 이번 과제가 서버와 통신을 요구하지는 않지만, Next.js에서 제공하는 기초적인 기능들을 사용하기 위해 노력했습니다. 이중 성능 최적화와 관련된 부분은 SSG(Static Site Generation)의 사용입니다. “/“ 경로에 위치한 메인 페이지를 제외하고 “/edit/“ 및 “/detail/” 경로에 위치한 페이지들은 SSG를 통해 생성되고 브라우저로 전달됩니다. 따라서 각 페이지는 컴파일 타임에 생성되어 서버에 저장되어 있다가 요청이 발생하면 html 및 리소스로 브라우저에  전달됩니다. 
+
+다만, 이럴 경우 수정하거나 새로 생성한 글이 브라우저에 나타나지 않는 문제가 존재했습니다. SSG를 사용하므로 Redux 전역 상태로 새로 작성한 글을 저장하더라도, 해당 경로에 들어가면 빌드 타임에 생성된 초기 상태가 나타납니다. 따라서, 서버로부터 조회하는 함수인 GetStaticProps의 중간에 개입해 Redux 전역 상태의 값을 삽입하고자 했습니다.
+
+이 과정에서 Next.js와 Redux를 연결하는 Redux Wrapper를 사용했는데, 서버와 클라이언트가 서로 독립적인 State를 가지고 있었습니다. 또한, 서버 State는 Node.js를 통해 독립적으로 관리되고 있으므로  클라이언트 State에 접근할 수 없다는 문제를 발견할 수 있었습니다. 따라서 중간에 클라이언트 State를 삽입하는 시도는 실패했습니다.
+
+따라서, 두번째 방법으로 초기 렌더링만 SSG를 이용하고 이후 변경이 발생하면 Client State를 참조하는 방식으로 성공할 수 있었습니다. 비유하자면 껍질만 서버로 불러온 뒤 내용은 로컬에서 업데이트하는 방식입니다. 이는 다음의 예제(https://github.com/vercel/next.js/tree/canary/examples/with-redux-wrapper)에서 아이디어를 얻었습니다. 예제는 SSG로 우선 서버에서 페이지를 생성한 뒤, 이후 상태변화를 클라이언트 State로 관리하고 있습니다. 우연히 발견한 꼼수를 통한 우아하지 않은(ㅠ) 방법이지만, 구현에 의미를 둘 수 있을 것 입니다.
+	
+<br/>
+
+## 전반적인 협업 과정
+
+- 구현할 페이지를 기준으로 개발할 파트를 분담했습니다.
+    
+    대헌 : 메인페이지, 상태관리
+    
+    효정 : 상세페이지, 에디터페이지
+    
+- 각자 기능에 따른 branch에서 작업한 후 pull request를 날리고 Merge하는 방식으로 협업을 진행했습니다.
